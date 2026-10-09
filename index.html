@@ -24,16 +24,14 @@
 
 body{
     font-family:Tahoma, Arial, sans-serif;
-    background:#f5f5f5;
+    background:#25005c;
 }
 
-/* الخلفية الرئيسية */
+/* الخلفية الرئيسية (تشمل العنوان والبطاقات) */
 
-.hero{
+.main-bg{
 
     position:relative;
-
-    height:600px;
 
     background:
     linear-gradient(
@@ -45,6 +43,15 @@ body{
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
+}
+
+/* قسم العنوان */
+
+.hero{
+
+    position:relative;
+
+    height:450px;
 
     display:flex;
     flex-direction:column;
@@ -111,9 +118,9 @@ body{
 
     max-width:1200px;
 
-    margin:-60px auto 50px;
+    margin:0 auto;
 
-    padding:0 20px;
+    padding:0 20px 70px;
 
     display:grid;
 
@@ -138,7 +145,7 @@ body{
     text-align:center;
 
     box-shadow:
-    0 10px 25px rgba(0,0,0,.15);
+    0 10px 25px rgba(0,0,0,.25);
 
     transition:.3s;
 }
@@ -165,19 +172,19 @@ body{
 /* ألوان الهوية */
 
 .clinics{
-    background:#25005c;
+    background:#FFFFFF
 }
 
 .locations{
-    background:#f6511d;
+    background:#FFFFFF
 }
 
 .services{
-    background:#25005c;
+    background:#FFFFFF
 }
 
 .contact{
-    background:#f6511d;
+    background:#FFFFFF
 }
 
 /* الفوتر */
@@ -199,7 +206,7 @@ footer{
 
 .hero{
 
-    height:500px;
+    height:380px;
 }
 
 .logo-corner img{
@@ -225,39 +232,43 @@ footer{
 
 <body>
 
-<section class="hero">
+<div class="main-bg">
 
-    <div class="logo-corner">
-        <img src="final%20logo.jpg" alt="شعار جمعية تنظيم الأسرة السورية">
+    <section class="hero">
+
+        <div class="logo-corner">
+            <img src="final%20logo.jpg" alt="شعار جمعية تنظيم الأسرة السورية">
+        </div>
+
+        <h1>جمعية تنظيم الأسرة السورية</h1>
+
+        <p>بوابة المراكز والخدمات الطبية</p>
+
+    </section>
+
+    <div class="cards">
+
+        <a href="clinics" class="card clinics">
+            <div class="icon">🩺</div>
+            <div class="card-title">العيادات</div>
+        </a>
+
+        <a href="locations" class="card locations">
+            <div class="icon">📍</div>
+            <div class="card-title">مواقع المراكز</div>
+        </a>
+
+        <a href="services" class="card services">
+            <div class="icon">🏥</div>
+            <div class="card-title">الخدمات</div>
+        </a>
+
+        <a href="contact" class="card contact">
+            <div class="icon">📞</div>
+            <div class="card-title">اتصل بنا</div>
+        </a>
+
     </div>
-
-    <h1>جمعية تنظيم الأسرة السورية</h1>
-
-    <p>بوابة المراكز والخدمات الطبية</p>
-
-</section>
-
-<div class="cards">
-
-    <a href="clinics.html" class="card clinics">
-        <div class="icon">🩺</div>
-        <div class="card-title">العيادات</div>
-    </a>
-
-    <a href="locations.html" class="card locations">
-        <div class="icon">📍</div>
-        <div class="card-title">مواقع المراكز</div>
-    </a>
-
-    <a href="services.html" class="card services">
-        <div class="icon">🏥</div>
-        <div class="card-title">الخدمات</div>
-    </a>
-
-    <a href="contact.html" class="card contact">
-        <div class="icon">📞</div>
-        <div class="card-title">اتصل بنا</div>
-    </a>
 
 </div>
 
