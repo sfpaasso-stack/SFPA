@@ -2,9 +2,10 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خدماتنا - جمعية تنظيم الأسرة السورية</title>
+<title>جمعية تنظيم الأسرة السورية</title>
 
 <!-- استدعاء خط Cairo الاحترافي -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +20,7 @@
 :root {
     --purple: #25005c;
     --orange: #f6511d;
-    --text-dark: #222222;
-    --green-badge: #2e7d32;
+    --card-text: #111111;
 }
 
 * {
@@ -31,296 +31,212 @@
 
 body {
     font-family: 'Cairo', sans-serif;
-    background: #f8f9fa;
-    color: var(--text-dark);
+    background: #11002c;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* الهيدر والعنوان */
-header {
-    background: linear-gradient(135deg, var(--purple), #3b008f);
-    color: white;
-    padding: 35px 20px;
-    text-align: center;
+/* الخلفية الرئيسية */
+.hero {
     position: relative;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.back-btn {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-header h1 {
-    font-size: 32px;
-    margin-bottom: 6px;
-}
-
-header p {
-    font-size: 16px;
-    opacity: 0.92;
-}
-
-/* المحتوى الرئيسي */
-main {
     flex: 1;
-    max-width: 1100px;
-    width: 100%;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-
-/* أزرار التصفية السريعة */
-.categories-filter {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 35px;
-}
-
-.cat-btn {
-    background: white;
-    border: 2px solid #e2e8f0;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-dark);
-    cursor: pointer;
-    transition: all 0.25s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-}
-
-.cat-btn i {
-    color: var(--purple);
-}
-
-.cat-btn:hover {
-    border-color: var(--orange);
-    color: var(--orange);
-}
-
-.cat-btn.active {
-    background: var(--purple);
-    color: white;
-    border-color: var(--purple);
-    box-shadow: 0 6px 15px rgba(37, 0, 92, 0.2);
-}
-
-.cat-btn.active i {
-    color: white;
-}
-
-/* شبكة الكروت */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-}
-
-.service-card {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-    border: 1px solid #edf2f7;
+    min-height: calc(100vh - 45px);
+    background: 
+        linear-gradient(
+            to bottom,
+            rgba(37, 0, 92, 0.20),
+            rgba(37, 0, 92, 0.35)
+        ),
+        url("CHBACK.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.service-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-/* تنسيق صورة الأطفال داخل الكرت */
-.card-child-img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-    border-radius: 14px;
-    margin-bottom: 15px;
-}
-
-/* الوسم المجاني */
-.free-badge {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: #e8f5e9;
-    color: var(--green-badge);
-    border: 1px solid #c8e6c9;
-    font-size: 12px;
-    font-weight: 800;
-    padding: 4px 12px;
-    border-radius: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    z-index: 2;
-}
-
-.service-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.service-icon {
-    width: 55px;
-    height: 55px;
-    border-radius: 16px;
-    background: rgba(37, 0, 92, 0.08);
-    color: var(--purple);
-    display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
-    flex-shrink: 0;
+    text-align: center;
+    color: white;
+    padding: 20px;
 }
 
-.service-title {
-    font-size: 20px;
+/* الشعار */
+.logo-corner {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px 15px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.logo-corner:hover {
+    transform: scale(1.03);
+}
+
+.logo-corner img {
+    width: 160px;
+    height: auto;
+    display: block;
+}
+
+/* عناوين الصفحة */
+.hero h1 {
+    font-size: 54px;
     font-weight: 800;
-    color: var(--purple);
-    line-height: 1.3;
-    padding-left: 60px; /* مسافة تجنباً للتداخل مع الوسم */
-}
-
-.service-list {
-    list-style: none;
-    margin-bottom: 20px;
-    flex: 1;
-}
-
-.service-list li {
-    font-size: 14px;
-    color: #4a5568;
     margin-bottom: 10px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    animation: fadeInDown 1s ease forwards;
+}
+
+.hero p {
+    font-size: 22px;
+    font-weight: 600;
+    opacity: 0.95;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 25px;
+    animation: fadeInUp 1s ease forwards;
+}
+
+/* الكروت الزجاجية الأكثر شفافية */
+.cards {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+    animation: fadeInUp 1.2s ease forwards;
+}
+
+.card {
     display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    line-height: 1.5;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 15px;
+    border-radius: 24px;
+    text-decoration: none;
+    color: var(--card-text);
+    
+    /* زيادة الشفافية وتأثير الزجاج المضبب */
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.service-list li i {
-    color: var(--orange);
-    margin-top: 4px;
-    font-size: 12px;
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
-/* زر البحث عن المركز والشكاوى */
-.find-clinic-btn {
+/* تحسين شكل الأيقونات الحديثة */
+.icon-box {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
     background: var(--purple);
     color: white;
-    text-decoration: none;
-    text-align: center;
-    padding: 12px 18px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    transition: background 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    margin-top: auto;
+    font-size: 30px;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 15px rgba(37, 0, 92, 0.25);
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.find-clinic-btn:hover {
+.card:hover .icon-box {
+    transform: scale(1.12);
     background: var(--orange);
 }
 
-/* الأزرار العائمة بالأسفل */
+.card-title {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--card-text);
+}
+
+/* الأزرار العائمة للاتصال والواتساب */
 .floating-contact {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 30px;
+    right: 25px;
+    z-index: 99;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    z-index: 99;
 }
 
 .float-btn {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 22px;
+    font-size: 24px;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease;
-}
-
-.float-btn:hover {
-    transform: scale(1.1);
-}
-
-.float-btn.whatsapp {
-    background-color: #25D366;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .float-btn.phone {
-    background-color: var(--orange);
+    background: var(--orange);
 }
 
-/* الفوتر */
+.float-btn.whatsapp {
+    background: #25D366;
+}
+
+.float-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* الفوتر البسيط */
 footer {
     background: var(--purple);
-    color: white;
+    color: rgba(255, 255, 255, 0.85);
     text-align: center;
-    padding: 15px;
+    padding: 12px 20px;
     font-size: 14px;
-    margin-top: auto;
+    letter-spacing: 1px;
 }
 
-@media (max-width: 600px) {
-    .back-btn {
-        position: static;
-        display: inline-block;
-        margin-bottom: 12px;
-        transform: none;
-    }
-    .service-title {
-        padding-left: 0;
-        margin-top: 25px;
-    }
-    .free-badge {
-        top: 15px;
-        left: 15px;
-    }
+/* حركات الظهور */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .logo-corner { top: 15px; left: 15px; }
+    .logo-corner img { width: 110px; }
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 17px; }
+    .cards { gap: 15px; }
+    .floating-contact { bottom: 20px; right: 15px; }
+    .float-btn { width: 48px; height: 48px; font-size: 20px; }
 }
 
 </style>
@@ -328,72 +244,60 @@ footer {
 
 <body>
 
-<header>
-    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> الرئيسية</a>
-    <h1>خدمات الجمعية الطبية والتوعوية</h1>
-    <p>جميع خدماتنا صحية متكاملة، ذات جودة عالية، ومتاحة للجميع مجاناً</p>
-</header>
+<section class="hero">
 
-<main>
-
-    <!-- الفلاتر السريعة -->
-    <div class="categories-filter">
-        <button class="cat-btn active" onclick="filterServices('all', this)"><i class="fa-solid fa-border-all"></i> جميع الخدمات</button>
-        <button class="cat-btn" onclick="filterServices('reproductive', this)"><i class="fa-solid fa-person-pregnant"></i> الصحة الإنجابية والنسائية</button>
-        <button class="cat-btn" onclick="filterServices('family', this)"><i class="fa-solid fa-pills"></i> تنظيم الأسرة</button>
-        <button class="cat-btn" onclick="filterServices('child', this)"><i class="fa-solid fa-baby"></i> صحة الطفل</button>
-        <button class="cat-btn" onclick="filterServices('support', this)"><i class="fa-solid fa-hand-holding-heart"></i> الدعم النفسي والحماية</button>
-        <button class="cat-btn" onclick="filterServices('specialized', this)"><i class="fa-solid fa-microscope"></i> الفحوصات والمخابر</button>
+    <div class="logo-corner">
+        <img src="final%20logo.jpg" alt="شعار جمعية تنظيم الأسرة السورية">
     </div>
 
-    <!-- شبكة عرض الخدمات -->
-    <div class="services-grid">
+    <h1>جمعية تنظيم الأسرة السورية</h1>
+    <p>بوابة المراكز والخدمات الطبية</p>
 
-        <!-- كرت 1: تنظيم الأسرة -->
-        <div class="service-card" data-category="family">
-            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
-            <div>
-                <div class="service-header">
-                    <div class="service-icon"><i class="fa-solid fa-pills"></i></div>
-                    <div class="service-title">خدمات تنظيم الأسرة</div>
-                </div>
-                <ul class="service-list">
-                    <li><i class="fa-solid fa-check-double"></i> تقديم المشورة والاستشارات الطبية حول وسائل تنظيم الأسرة.</li>
-                    <li><i class="fa-solid fa-check-double"></i> صرف واستشارة حبوب منع الحمل (البسيطة والمركبة).</li>
-                    <li><i class="fa-solid fa-check-double"></i> تقديم وتركيب وإزالة وسائل اللولب والغرسات الجلدية.</li>
-                    <li><i class="fa-solid fa-check-double"></i> توفير الحقن ووسائل منع الحمل قصيرة وطويلة المفعول.</li>
-                </ul>
+    <div class="cards">
+        <a href="clinics.html" class="card">
+            <div class="icon-box">
+                <i class="fa-solid fa-stethoscope"></i>
             </div>
-            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
-        </div>
+            <div class="card-title">العيادات</div>
+        </a>
 
-        <!-- كرت 2: الصحة الإنجابية والنسائية -->
-        <div class="service-card" data-category="reproductive">
-            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
-            <div>
-                <div class="service-header">
-                    <div class="service-icon"><i class="fa-solid fa-person-pregnant"></i></div>
-                    <div class="service-title">الصحة الإنجابية والولادة</div>
-                </div>
-                <ul class="service-list">
-                    <li><i class="fa-solid fa-check-double"></i> معاينات ورعاية صحة الحوامل ومتابعة ما قبل وما بعد الولادة.</li>
-                    <li><i class="fa-solid fa-check-double"></i> التصوير بالموجات فوق الصوتية (الإيكو) لمتابعة الحمل.</li>
-                    <li><i class="fa-solid fa-check-double"></i> التشخيص والمعالجة لالأمراض النسائية المختلفة والإفرازات.</li>
-                    <li><i class="fa-solid fa-check-double"></i> استشارات وخدمات التغذية والإرضاع الطبيعي.</li>
-                </ul>
+        <a href="locations.html" class="card">
+            <div class="icon-box">
+                <i class="fa-solid fa-location-dot"></i>
             </div>
-            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
-        </div>
+            <div class="card-title">مواقع المراكز</div>
+        </a>
 
-        <!-- كرت 3: صحة الطفل والتغذية (مزود بصورة أطفال عالية الجودة) -->
-        <div class="service-card" data-category="child">
-            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
-            <div>
-                <!-- صورة طفل أخصائي تغذية ورعاية مجانية عالية الجودة -->
-                <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&w=600&q=80" alt="صحة ورعاية الطفل" class="card-child-img">
-                
-                <div class="service-header">
-                    <div class="service-icon"><i class="fa-solid fa-baby"></i></div>
-                    <div class="service-title">طب وصحة الأطفال</div>
-                </div>
-                <ul class
+        <a href="services.html" class="card">
+            <div class="icon-box">
+                <i class="fa-solid fa-hospital"></i>
+            </div>
+            <div class="card-title">الخدمات</div>
+        </a>
+
+        <a href="contact.html" class="card">
+            <div class="icon-box">
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <div class="card-title">اتصل بنا</div>
+        </a>
+    </div>
+
+</section>
+
+<!-- أزرار التواصل العائمة -->
+<div class="floating-contact">
+    <a href="https://wa.me/963900000000" target="_blank" class="float-btn whatsapp" title="تواصل عبر واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:011000000" class="float-btn phone" title="اتصال مباشر">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+</div>
+
+<footer>
+    SFPA © 2026 Ali issa
+</footer>
+
+</body>
+</html>
