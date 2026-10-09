@@ -37,52 +37,38 @@ body {
     flex-direction: column;
 }
 
-/* الهيدر مع دعم اللوغو */
+/* الهيدر كما كان سابقاً تماماً */
 header {
     background: linear-gradient(135deg, var(--purple), #3b008f);
     color: white;
-    padding: 30px 20px;
+    padding: 35px 20px;
     text-align: center;
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header-container {
-    max-width: 1000px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    position: relative;
 }
 
 .logo-img {
-    max-height: 70px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 65px;
     width: auto;
     object-fit: contain;
 }
 
-.header-text {
-    flex: 1;
-    text-align: center;
-}
-
 header h1 {
-    font-size: 30px;
-    margin-bottom: 5px;
+    font-size: 32px;
+    margin-bottom: 8px;
     font-weight: 800;
 }
 
 header p {
-    font-size: 15px;
+    font-size: 16px;
     opacity: 0.9;
 }
 
-/* شبكة الخيارات الرئيسية */
+/* المحتوى الرئيسي وشبكة الكروت الزجاجية (Glassmorphic) */
 main {
     flex: 1;
     max-width: 1000px;
@@ -217,22 +203,21 @@ footer {
     margin-top: auto;
 }
 
-/* 📱 إعدادات الاستجابة للموبايل لتفادي تداخل اللوغو والنص */
+/* حل الموبايل الذكي دون تغيير ألوان وحجم الهيدر */
 @media (max-width: 600px) {
-    .header-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
+    header {
+        padding-top: 20px;
     }
-
     .logo-img {
-        max-height: 60px;
+        position: static;
+        transform: none;
+        display: block;
+        margin: 0 auto 10px auto;
+        max-height: 55px;
     }
-
     header h1 {
         font-size: 24px;
     }
-
     header p {
         font-size: 14px;
     }
@@ -244,16 +229,11 @@ footer {
 <body>
 
 <header>
-    <div class="header-container">
-        <!-- النص الرئيسي -->
-        <div class="header-text">
-            <h1>جمعية تنظيم الأسرة السورية</h1>
-            <p>مرحباً بكم في البوابة الرقمية لمراكز وخدمات الجمعية</p>
-        </div>
-
-        <!-- اللوغو (تأكد من مسار الصورة لديك) -->
-        <img src="logo.png" alt="شعار الجمعية" class="logo-img">
-    </div>
+    <!-- اللوغو في اليسار بالحواسيب، وأعلى النص في الجوال تلقائياً -->
+    <img src="logo.png" alt="شعار الجمعية" class="logo-img">
+    
+    <h1>جمعية تنظيم الأسرة السورية</h1>
+    <p>مرحباً بكم في البوابة الرقمية لمراكز وخدمات الجمعية</p>
 </header>
 
 <main>
@@ -289,7 +269,7 @@ footer {
             <a href="services.html" class="card-btn"><i class="fa-solid fa-stethoscope"></i> استعراض الخدمات</a>
         </div>
 
-        <!-- كرت الشكاوى والمقترحات -->
+        <!-- كرت الشكاوى والمقترحات (الزر المستبدل) -->
         <div class="card">
             <div>
                 <div class="card-icon"><i class="fa-solid fa-comment-dots"></i></div>
