@@ -9,6 +9,14 @@
 
 <style>
 
+:root{
+    --purple:#25005c;
+    --purple-light:#4b1da6;
+    --orange:#f6511d;
+    --orange-light:#ff7c46;
+    --white:#ffffff;
+}
+
 *{
     margin:0;
     padding:0;
@@ -17,141 +25,159 @@
 
 body{
     font-family:Tahoma, Arial, sans-serif;
-    background:#f7f7f7;
+    background:#f7f7fb;
 }
 
+/* القسم الرئيسي */
+
 .hero{
-min-height:75vh;
-background:
-  url("final-logo.jpg");
-background-color:#ffffff;
-background-size:contain;
-background-position:center;
-background-repeat:no-repeat;
 
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+    min-height:85vh;
 
-text-align:center;
-color:white;
-padding:20px;
+    background:
+    linear-gradient(
+    rgba(37,0,92,0.65),
+    rgba(37,0,92,0.65)
+    ),
+    url("CHBACK.png");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:40px 20px;
+
+}
+
+/* الشعار */
+
+.logo-box{
+
+    background:white;
+    padding:20px;
+
+    border-radius:25px;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.25);
+
+    margin-bottom:30px;
+
 }
 
 .logo{
-    width:420px;
-    max-width:90%;
-    margin-bottom:25px;
+
+    width:600px;
+    max-width:90vw;
+    height:auto;
+    display:block;
+
 }
 
 .hero h1{
-    font-size:42px;
+
+    color:white;
+    font-size:48px;
     margin-bottom:10px;
+
 }
 
 .hero p{
-    font-size:22px;
-    margin-bottom:30px;
+
+    color:white;
+    font-size:24px;
+
 }
 
+/* البطاقات */
+
 .cards{
+
+    width:100%;
     max-width:1200px;
-    margin:-70px auto 50px;
+
+    margin:-70px auto 60px;
     padding:0 20px;
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+
 }
 
 .card{
-    background:white;
-    border-radius:20px;
-    padding:30px;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:22px;
+
+    padding:35px 25px;
+
     text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.15);
+
     transition:0.3s;
+
 }
 
 .card:hover{
-    transform:translateY(-8px);
-}
 
-.card a{
-    text-decoration:none;
-    color:#2c0a6b;
-    font-size:22px;
-    font-weight:bold;
+    transform:translateY(-8px);
+
 }
 
 .icon{
-    font-size:50px;
+
+    font-size:55px;
     display:block;
     margin-bottom:15px;
+
+}
+
+.card-title{
+
+    font-size:24px;
+    font-weight:bold;
+
+}
+
+.clinics{
+    background:var(--purple);
+}
+
+.locations{
+    background:var(--purple-light);
+}
+
+.services{
+    background:var(--orange);
+}
+
+.contact{
+    background:var(--orange-light);
 }
 
 footer{
-    background:#2c0a6b;
+
+    background:var(--purple);
+
     color:white;
+
     text-align:center;
+
     padding:20px;
+
 }
 
-</style>
+@media(max-width:768px){
 
-</head>
-
-<body>
-
-<section class="hero">
-
-final logo.jpg
-
-<h1>جمعية تنظيم الأسرة السورية</h1>
-
-<p>
-بوابة المراكز والخدمات الطبية
-</p>
-
-</section>
-
-<div class="cards">
-
-<div class="card">
-Clinics
-<span class="icon">🩺</span>
-العيادات
-</a>
-</div>
-
-<div class="card">
-Locations
-<span class="icon">📍</span>
-مواقع المراكز
-</a>
-</div>
-
-<div class="card">
-Services
-<span class="icon">🏥</span>
-الخدمات
-</a>
-</div>
-
-<div class="card">
-Contact
-<span class="icon">📞</span>
-اتصل بنا
-</a>
-</div>
-
-</div>
-
-<footer>
-SFPA © 2026 - Ali issa
-</footer>
-
-</body>
-
-</html>
+.hero
