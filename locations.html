@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خريطة مواقع المراكز - جمعية تنظيم الأسرة السورية</title>
+
+<!-- خط Cairo -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- أيقونات FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- مكتبة الخرائط التفاعلية Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<style>
+
+:root {
+    --purple: #25005c;
+    --orange: #f6511d;
+    --text-dark: #222222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: #f8f9fa;
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* الهيدر */
+header {
+    background: linear-gradient(135deg, var(--purple), #3b008f);
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.back-btn {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+header h1 {
+    font-size: 28px;
+    margin-bottom: 4px;
+}
+
+header p {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* أدوات الفلترة في الخريطة */
+.filter-bar {
+    max-width: 1100px;
+    width: 100%;
+    margin: 20px auto 10px;
+    padding: 0 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    background: white;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    border-color: var(--orange);
+}
+
+/* حاوية الخريطة */
+.map-container {
+    flex: 1;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+}
+
+#map {
+    width: 100%;
+    height: 550px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+/* الفوتر */
+footer {
+    background: var(--purple);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+@media (max-width: 600px) {
+    .back-btn {
+        position: static;
+        display: inline-block;
+        margin-bottom: 10px;
+        transform: none;
+    }
+    #map {
+        height: 400px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> الرئيسية</a>
+    <h1>خريطة المراكز والعيادات</h1>
+    <p>استعرض أماكن تواجد المراكز التابعة لجمعية تنظيم الأسرة السورية تفاعلياً</p>
+</header>
+
+<div class="filter-bar">
+    <select class="filter-select" id="govFilter" onchange="filterMap()">
+        <option value="all">كل المحافظات</option>
+        <option value="دمشق">دمشق</option>
+        <option value="ريف دمشق">ريف دمشق</option>
+        <option value="حلب">حلب</option>
+        <option value="حمص">حمص</option>
+        <option value="حماه">حماه</option>
+        <option value="اللاذقية">اللاذقية</option>
+        <option value="طرطوس">طرطوس</option>
+        <option value="درعا">درعا</option>
+        <option value="السويداء">السويداء</option>
+        <option value="القنيطرة">القنيطرة</option>
+        <option value="دير الزور">دير الزور</option>
+    </select>
+
+    <select class="filter-select" id="typeFilter" onchange="filterMap()">
+        <option value="all">جميع أنواع المراكز</option>
+        <option value="عيادة ثابتة">عيادة ثابتة</option>
+        <option value="مركز دعم وتمكين المرأة">مركز دعم وتمكين المرأة</option>
+        <option value="مركز شباب">مركز شباب</option>
+        <option value="مشفى">مشفى</option>
+        <option value="مخبر">مخبر</option>
+    </select>
+</div>
+
+<main class="map-container">
+    <div id="map"></div>
+</main>
+
+<footer>
+    SFPA © 2026
+</footer>
+
+<!-- مكتبة الخرائط Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+// قاعدة البيانات المزودة بالإحداثيات الدقيقة
+const locationsData = [
+    // دمشق
+    { name: "عيادة - الحلبوني", type: "عيادة ثابتة", gov: "دمشق", location: "الحلبوني- شارع المكتبات-جانب دار ابن كثير", lat: 33.30393, lng: 36.17379 },
+    { name: "عيادة - القدم", type: "عيادة ثابتة", gov: "دمشق", location: "القدم – م: ضمن مستوصف الدولة", lat: 33.47208567, lng: 36.28708546 },
+    { name: "مركز دعم وتمكين المرأة - مساكن برزة", type: "مركز دعم وتمكين المرأة", gov: "دمشق", location: "مساكن برزة", lat: 33.30127, lng: 36.18341 },
+
+    // ريف دمشق
+    { name: "عيادة - حفير تحتا", type: "عيادة ثابتة", gov: "ريف دمشق", location: "حفير تحتا- جانب جامع الفاروق", lat: 33.64979365, lng: 36.43783148 },
+    { name: "عيادة - جرمانا", type: "عيادة ثابتة", gov: "ريف دمشق", location: "جرمانا- امتداد البلدية القديمة", lat: 33.48431748, lng: 36.34354682 },
+    { name: "عيادة - يبرود", type: "عيادة ثابتة", gov: "ريف دمشق", location: "يبرود- شارع الماركات", lat: 33.97069246, lng: 36.65800064 },
+    { name: "عيادة - دوما", type: "عيادة ثابتة", gov: "ريف دمشق", location: "دوما - جامع إبراهيم الخليل", lat: 33.56961953, lng: 36.4090191 },
+    { name: "وحدة حماية الأسرة - قدسيا", type: "عيادة ثابتة", gov: "ريف دمشق", location: "ساحة تروي - ناحية مركز قدسيا", lat: 33.54276297, lng: 36.19646788 },
+    { name: "مركز دعم وتمكين المرأة - قدسيا", type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", location: "قدسيا- مقابل التربة", lat: 33.551874, lng: 36.212537 },
+    { name: "مركز دعم وتمكين المرأة - دوما", type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", location: "دوما-شارع القوتلي", lat: 33.568566, lng: 36.406974 },
+    { name: "مركز دعم وتمكين المرأة - كفر بطنا", type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", location: "كفر بطنا-- ساحة النور", lat: 33.3069, lng: 36.2238 },
+    { name: "مركز دعم وتمكين المرأة - أشرفية صحنايا", type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", location: "صحنايا- مقابل نادي بلاتينيوم", lat: 33.424555, lng: 36.222021 },
+    { name: "مركز دعم وتمكين المرأة - يبرود", type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", location: "يبرود-حي الصالحية", lat: 33.973667, lng: 36.665667 },
+
+    // حلب
+    { name: "عيادة - الزبدية", type: "عيادة ثابتة", gov: "حلب", location: "الزبدية- النزلة مقابل الفرن االآلي", lat: 37.134222, lng: 36.187528 },
+    { name: "مركز تل حديا", type: "عيادة ثابتة", gov: "حلب", location: "تل حديا شارع المستوصف", lat: 36.941833, lng: 35.994861 },
+    { name: "مركز الشيخ سعيد", type: "عيادة ثابتة", gov: "حلب", location: "شارع الشيخ سعيد الرئيسي", lat: 37.154806, lng: 36.165611 },
+    { name: "مركز الجبول", type: "عيادة ثابتة", gov: "حلب", location: "مفرق السفيرة -شارع الروابي", lat: 37.503333, lng: 36.085556 },
+    { name: "مركز دعم وتمكين المرأة - حلب الرازي", type: "مركز دعم وتمكين المرأة", gov: "حلب", location: "قرية بلاس جانب المخبز الالي سابقا", lat: 36.206846, lng: 37.136878 },
+
+    // حمص
+    { name: "عيادة - الخالدية", type: "عيادة ثابتة", gov: "حمص", location: "الخالدية- شارع الشوادر", lat: 34.741806, lng: 36.717667 },
+    { name: "عيادة - الوعر", type: "عيادة ثابتة", gov: "حمص", location: "الوعر- قرب القصر العدلي", lat: 34.737222, lng: 36.666361 },
+    { name: "عيادة - تدمر", type: "عيادة ثابتة", gov: "حمص", location: "تدمر- حي الجنوب", lat: 34.556139, lng: 38.276000 },
+    { name: "عيادة ودير بعلبة", type: "عيادة ثابتة", gov: "حمص", location: "دير بعلبه- ضمن المستوصف الصحي الشمالي", lat: 34.762556, lng: 36.744444 },
+    { name: "مخبر دير بعلبة", type: "مخبر", gov: "حمص", location: "دير بعلبه- ضمن المستوصف الصحي الشمالي", lat: 34.762556, lng: 36.744444 },
+    { name: "مشفى دار السلام", type: "مشفى", gov: "حمص", location: "جورة الشياح خلف مديرية البريد", lat: 34.733194, lng: 36.707278 },
+    { name: "مركز دعم وتمكين المرأة - الوعر", type: "مركز دعم وتمكين المرأة", gov: "حمص", location: "حمص، الخالدية ،خلف مدرسة زنوبيا", lat: 34.74355118, lng: 36.71854192 },
+
+    // حماه
+    { name: "عيادة - الظاهرية", type: "عيادة ثابتة", gov: "حماه", location: "الضاهرية الحي الغربي", lat: 35.16218988, lng: 36.72652108 },
+    { name: "عيادة - الجلمة", type: "عيادة ثابتة", gov: "حماه", location: "الجلمة - مقابل مدرسة الجلمة الجنوبية", lat: 35.321333, lng: 36.486889 },
+    { name: "مركز دعم وتمكين المرأة - حماة", type: "مركز دعم وتمكين المرأة", gov: "حماه", location: "الشرقية - الحاضر - عند جامع المهنا", lat: 35.13594, lng: 36.762326 },
+
+    // اللاذقية
+    { name: "عيادة - جبلة", type: "عيادة ثابتة", gov: "اللاذقية", location: "جبلة جنوب الملعب", lat: 35.36308139, lng: 35.92832648 },
+    { name: "عيادة - الرمل الشمالي", type: "عيادة ثابتة", gov: "اللاذقية", location: "الرمل الشمالي - حي الجمهورية", lat: 35.5337798, lng: 35.7804638 },
+    { name: "مركز دعم وتمكين المرأة - اللاذقية", type: "مركز دعم وتمكين المرأة", gov: "اللاذقية", location: "الرمل الشمالي - مقابل روضة براعم البعث", lat: 35.532978, lng: 35.77939 },
+
+    // طرطوس
+    { name: "عيادة - دوير الشيخ سعد", type: "عيادة ثابتة", gov: "طرطوس", location: "دوير الشيخ سعد بالقرب من روضة الصبا", lat: 34.91912194, lng: 35.92057563 },
+    { name: "مركز دعم وتمكين المرأة - طرطوس", type: "مركز دعم وتمكين المرأة", gov: "طرطوس", location: "دوير الشيخ سعد مقابل صالة زنوبيا", lat: 34.92148391, lng: 35.92234593 },
+
+    // درعا
+    { name: "عيادة - الكاشف", type: "عيادة ثابتة", gov: "درعا", location: "درعا حي الكاشف - العيادات الشاملة", lat: 32.6328333, lng: 36.1097276 },
+    { name: "مركز دعم وتمكين المرأة - درعا", type: "مركز دعم وتمكين المرأة", gov: "درعا", location: "حي السبيل -خلف مدرسة الأموية", lat: 32.627977, lng: 36.106835 },
+
+    // السويداء
+    { name: "عيادة - القصور", type: "عيادة ثابتة", gov: "السويداء", location: "طريق المشفى الوطني", lat: 32.70256175, lng: 36.57782448 },
+    { name: "عيادة - الأمل", type: "عيادة ثابتة", gov: "السويداء", location: "مقابل شركة سيريا تل", lat: 32.71208691, lng: 36.56944063 },
+    { name: "مركز دعم وتمكين المرأة - السويداء", type: "مركز دعم وتمكين المرأة", gov: "السويداء", location: "المدينة -مقابل سيريا تل-دخلة الحلاج", lat: 32.71230027, lng: 36.56929381 },
+
+    // القنيطرة
+    { name: "عيادة - خان أرنبة", type: "عيادة ثابتة", gov: "القنيطرة", location: "خان أرنبة- شارع مدينة السلام", lat: 33.17996182, lng: 35.89328288 },
+
+    // دير الزور
+    { name: "عيادة - بعاجين", type: "عيادة ثابتة", gov: "دير الزور", location: "بعاجين - جانب حديقة النصارى", lat: 35.33783016, lng: 40.13214137 },
+    { name: "عيادة - الميادين", type: "عيادة ثابتة", gov: "دير الزور", location: "الميادين بالقرب من المحكمة", lat: 35.019259, lng: 40.453805 },
+    { name: "مركز دعم وتمكين المرأة - دير الزور", type: "مركز دعم وتمكين المرأة", gov: "دير الزور", location: "بعاجين - جانب حديقة النصارى", lat: 35.33783016, lng: 40.13214137 }
+];
+
+// تهيئة الخريطة على سنتر سوريا
+const map = L.map('map').setView([34.8021, 38.9968], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+
+let markersGroup = L.layerGroup().addTo(map);
+
+function renderMarkers(data) {
+    markersGroup.clearLayers();
+
+    data.forEach(item => {
+        if (item.lat && item.lng) {
+            const popupContent = `
+                <div style="font-family:'Cairo', sans-serif; text-align:right;">
+                    <h4 style="color:#25005c; margin-bottom:5px;">${item.name}</h4>
+                    <p style="font-size:12px; margin-bottom:5px;">📍 ${item.location}</p>
+                    <a href="https://www.google.com/maps?q=${item.lat},${item.lng}" target="_blank" style="display:inline-block; background:#f6511d; color:white; padding:4px 10px; border-radius:6px; font-size:12px; text-decoration:none;">فتح في خرائط جوجل</a>
+                </div>
+            `;
+
+            const marker = L.marker([item.lat, item.lng]).bindPopup(popupContent);
+            markersGroup.addLayer(marker);
+        }
+    });
+}
+
+function filterMap() {
+    const selectedGov = document.getElementById('govFilter').value;
+    const selectedType = document.getElementById('typeFilter').value;
+
+    const filtered = locationsData.filter(item => {
+        const matchesGov = (selectedGov === 'all' || item.gov === selectedGov);
+        const matchesType = (selectedType === 'all' || item.type === selectedType);
+        return matchesGov && matchesType;
+    });
+
+    renderMarkers(filtered);
+}
+
+// عرض جميع النقاط عند البداية
+renderMarkers(locationsData);
+
+</script>
+
+</body>
+</html>
