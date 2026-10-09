@@ -262,4 +262,176 @@ footer {
     .back-btn {
         position: static;
         display: inline-block;
-        margin-bottom: 12
+        margin-bottom: 12px;
+        transform: none;
+    }
+    .service-title {
+        padding-left: 0;
+        margin-top: 25px;
+    }
+    .free-badge {
+        top: 15px;
+        left: 15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> الرئيسية</a>
+    <h1>خدمات الجمعية الطبية والتوعوية</h1>
+    <p>جميع خدماتنا صحية متكاملة، ذات جودة عالية، ومتاحة للجميع مجاناً</p>
+</header>
+
+<main>
+
+    <!-- الفلاتر السريعة -->
+    <div class="categories-filter">
+        <button class="cat-btn active" onclick="filterServices('all', this)"><i class="fa-solid fa-border-all"></i> جميع الخدمات</button>
+        <button class="cat-btn" onclick="filterServices('reproductive', this)"><i class="fa-solid fa-person-pregnant"></i> الصحة الإنجابية والنسائية</button>
+        <button class="cat-btn" onclick="filterServices('family', this)"><i class="fa-solid fa-pills"></i> تنظيم الأسرة</button>
+        <button class="cat-btn" onclick="filterServices('child', this)"><i class="fa-solid fa-baby"></i> صحة الطفل</button>
+        <button class="cat-btn" onclick="filterServices('support', this)"><i class="fa-solid fa-hand-holding-heart"></i> الدعم النفسي والحماية</button>
+        <button class="cat-btn" onclick="filterServices('specialized', this)"><i class="fa-solid fa-microscope"></i> الفحوصات والمخابر</button>
+    </div>
+
+    <!-- شبكة عرض الخدمات -->
+    <div class="services-grid">
+
+        <!-- كرت 1: تنظيم الأسرة -->
+        <div class="service-card" data-category="family">
+            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+            <div>
+                <div class="service-header">
+                    <div class="service-icon"><i class="fa-solid fa-pills"></i></div>
+                    <div class="service-title">خدمات تنظيم الأسرة</div>
+                </div>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check-double"></i> تقديم المشورة والاستشارات الطبية حول وسائل تنظيم الأسرة.</li>
+                    <li><i class="fa-solid fa-check-double"></i> صرف واستشارة حبوب منع الحمل (البسيطة والمركبة).</li>
+                    <li><i class="fa-solid fa-check-double"></i> تقديم وتركيب وإزالة وسائل اللولب والغرسات الجلدية.</li>
+                    <li><i class="fa-solid fa-check-double"></i> توفير الحقن ووسائل منع الحمل قصيرة وطويلة المفعول.</li>
+                </ul>
+            </div>
+            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+        </div>
+
+        <!-- كرت 2: الصحة الإنجابية والنسائية -->
+        <div class="service-card" data-category="reproductive">
+            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+            <div>
+                <div class="service-header">
+                    <div class="service-icon"><i class="fa-solid fa-person-pregnant"></i></div>
+                    <div class="service-title">الصحة الإنجابية والولادة</div>
+                </div>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check-double"></i> معاينات ورعاية صحة الحوامل ومتابعة ما قبل وما بعد الولادة.</li>
+                    <li><i class="fa-solid fa-check-double"></i> التصوير بالموجات فوق الصوتية (الإيكو) لمتابعة الحمل.</li>
+                    <li><i class="fa-solid fa-check-double"></i> التشخيص والمعالجة لالأمراض النسائية المختلفة والإفرازات.</li>
+                    <li><i class="fa-solid fa-check-double"></i> استشارات وخدمات التغذية والإرضاع الطبيعي.</li>
+                </ul>
+            </div>
+            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+        </div>
+
+        <!-- كرت 3: صحة الطفل والتغذية -->
+        <div class="service-card" data-category="child">
+            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+            <div>
+                <div class="service-header">
+                    <div class="service-icon"><i class="fa-solid fa-baby"></i></div>
+                    <div class="service-title">طب وصحة الأطفال</div>
+                </div>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check-double"></i> المعاينات الطبية الدورية واستشارات طب الأطفال العام.</li>
+                    <li><i class="fa-solid fa-check-double"></i> المسح التغذوي وعلاج حالات سوء التغذية الحاد.</li>
+                    <li><i class="fa-solid fa-check-double"></i> تقديم الفيتامينات والمغذيات الدقيقة المخصصة للأطفال.</li>
+                    <li><i class="fa-solid fa-check-double"></i> تقديم استشارات رعاية الطفولة المبكرة والنمو السليم.</li>
+                </ul>
+            </div>
+            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+        </div>
+
+        <!-- كرت 4: الكشف المبكر عن الأورام -->
+        <div class="service-card" data-category="specialized">
+            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+            <div>
+                <div class="service-header">
+                    <div class="service-icon"><i class="fa-solid fa-ribbon"></i></div>
+                    <div class="service-title">الكشف المبكر عن أورام الثدي</div>
+                </div>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check-double"></i> الفحص السريري واليدوي للثدي والتوعية بالتقصي الذاتي.</li>
+                    <li><i class="fa-solid fa-check-double"></i> التصوير الشعاعي للثدي عبر أجهزة الماموغرافي.</li>
+                    <li><i class="fa-solid fa-check-double"></i> إيكو الثدي والمتابعة الطبية الاختصاصية للحالات.</li>
+                </ul>
+            </div>
+            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+        </div>
+
+        <!-- كرت 5: الدعم النفسي والحماية (تمكين المرأة) -->
+        <div class="service-card" data-category="support">
+            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+            <div>
+                <div class="service-header">
+                    <div class="service-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                    <div class="service-title">الدعم النفسي والاجتماعي والحماية</div>
+                </div>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check-double"></i> جلسات الدعم النفسي الاجتماعي (PSS) واستشارات الصحة العقلية.</li>
+                    <li><i class="fa-solid fa-check-double"></i> خدمات الاستشارة النفسية من قبل أطباء ومعالجين متخصصين.</li>
+                    <li><i class="fa-solid fa-check-double"></i> دعم وتمكين المرأة وإدارة حالات العنف القائم على النوع الاجتماعي.</li>
+                    <li><i class="fa-solid fa-check-double"></i> الإسعافات الأولية النفسية والإحالة للخدمات المتخصصة.</li>
+                </ul>
+            </div>
+            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+        </div>
+
+        <!-- كرت 6: المخابر والفحوصات الطبية -->
+        <div class="service-card" data-category="specialized">
+            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+            <div>
+                <div class="service-header">
+                    <div class="service-icon"><i class="fa-solid fa-flask"></i></div>
+                    <div class="service-title">الخدمات المخبرية والتشخيصية</div>
+                </div>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check-double"></i> إجراء تحاليل واختبارات الحمل المخبرية المباشرة.</li>
+                    <li><i class="fa-solid fa-check-double"></i> التقصي والتشخيص السريع للأمراض المنقولة جنسياً (STI/RTI).</li>
+                    <li><i class="fa-solid fa-check-double"></i> الفحوصات المخبرية الخاصة بالصحة الإنجابية والنسائية.</li>
+                </ul>
+            </div>
+            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    SFPA © 2026
+</footer>
+
+<script>
+function filterServices(category, btnElement) {
+    // تحديث الأزرار النشطة
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    // تصفية الكروت
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+
+</body>
+</html>
