@@ -2,21 +2,25 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>جمعية تنظيم الأسرة السورية</title>
 
-<!-- استدعاء خط Cairo الاحترافي من Google Fonts -->
+<!-- استدعاء خط Cairo الاحترافي -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- استدعاء أيقونات FontAwesome الاحترافية -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 
 :root {
     --purple: #25005c;
     --orange: #f6511d;
-    --card-text: #1f1f1f;
+    --card-text: #111111;
 }
 
 * {
@@ -41,8 +45,8 @@ body {
     background: 
         linear-gradient(
             to bottom,
-            rgba(37, 0, 92, 0.25),
-            rgba(37, 0, 92, 0.45)
+            rgba(37, 0, 92, 0.20),
+            rgba(37, 0, 92, 0.35)
         ),
         url("CHBACK.png");
     background-size: cover;
@@ -57,7 +61,7 @@ body {
     padding: 20px;
 }
 
-/* اللوغو مع لمسة انسيابية */
+/* الشعار */
 .logo-corner {
     position: absolute;
     top: 25px;
@@ -81,7 +85,7 @@ body {
     display: block;
 }
 
-/* عناوين الصفحة بتأثير حركي */
+/* عناوين الصفحة */
 .hero h1 {
     font-size: 54px;
     font-weight: 800;
@@ -95,17 +99,17 @@ body {
     font-weight: 600;
     opacity: 0.95;
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     animation: fadeInUp 1s ease forwards;
 }
 
-/* شبكة الكروت بتأثير الزجاج المضبب (Glassmorphism) */
+/* الكروت الزجاجية الأكثر شفافية */
 .cards {
     position: relative;
     z-index: 2;
     width: 100%;
     max-width: 1100px;
-    margin-top: 30px;
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 20px;
@@ -117,16 +121,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 28px 15px;
+    padding: 32px 15px;
     border-radius: 24px;
     text-decoration: none;
     color: var(--card-text);
     
-    /* خلفية زجاجية مضببة */
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    /* زيادة الشفافية وتأثير الزجاج المضبب */
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -134,24 +138,73 @@ body {
 
 .card:hover {
     transform: translateY(-10px) scale(1.02);
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.85);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
-.icon {
-    font-size: 48px;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease;
+/* تحسين شكل الأيقونات الحديثة */
+.icon-box {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--purple);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 15px rgba(37, 0, 92, 0.25);
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.card:hover .icon {
-    transform: scale(1.15);
+.card:hover .icon-box {
+    transform: scale(1.12);
+    background: var(--orange);
 }
 
 .card-title {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 21px;
+    font-weight: 800;
     color: var(--card-text);
+}
+
+/* الأزرار العائمة للاتصال والواتساب */
+.floating-contact {
+    position: fixed;
+    bottom: 30px;
+    right: 25px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.float-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.float-btn.phone {
+    background: var(--orange);
+}
+
+.float-btn.whatsapp {
+    background: #25D366;
+}
+
+.float-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* الفوتر البسيط */
@@ -164,47 +217,26 @@ footer {
     letter-spacing: 1px;
 }
 
-/* حركات الظهور (Animations) */
+/* حركات الظهور */
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* تجاوب الشاشات الصغيرة */
+/* الشاشات الصغيرة */
 @media (max-width: 768px) {
-    .logo-corner {
-        top: 15px;
-        left: 15px;
-    }
-    .logo-corner img {
-        width: 110px;
-    }
-    .hero h1 {
-        font-size: 32px;
-    }
-    .hero p {
-        font-size: 17px;
-    }
-    .cards {
-        gap: 15px;
-    }
+    .logo-corner { top: 15px; left: 15px; }
+    .logo-corner img { width: 110px; }
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 17px; }
+    .cards { gap: 15px; }
+    .floating-contact { bottom: 20px; right: 15px; }
+    .float-btn { width: 48px; height: 48px; font-size: 20px; }
 }
 
 </style>
@@ -223,27 +255,45 @@ footer {
 
     <div class="cards">
         <a href="clinics.html" class="card">
-            <div class="icon">🩺</div>
+            <div class="icon-box">
+                <i class="fa-solid fa-stethoscope"></i>
+            </div>
             <div class="card-title">العيادات</div>
         </a>
 
         <a href="locations.html" class="card">
-            <div class="icon">📍</div>
+            <div class="icon-box">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
             <div class="card-title">مواقع المراكز</div>
         </a>
 
         <a href="services.html" class="card">
-            <div class="icon">🏥</div>
+            <div class="icon-box">
+                <i class="fa-solid fa-hospital"></i>
+            </div>
             <div class="card-title">الخدمات</div>
         </a>
 
         <a href="contact.html" class="card">
-            <div class="icon">📞</div>
+            <div class="icon-box">
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
             <div class="card-title">اتصل بنا</div>
         </a>
     </div>
 
 </section>
+
+<!-- أزرار التواصل العائمة -->
+<div class="floating-contact">
+    <a href="https://wa.me/963900000000" target="_blank" class="float-btn whatsapp" title="تواصل عبر واتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:011000000" class="float-btn phone" title="اتصال مباشر">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+</div>
 
 <footer>
     SFPA © 2026
