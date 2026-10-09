@@ -11,10 +11,9 @@
 
 :root{
     --purple:#25005c;
-    --purple-light:#4b1da6;
+    --purple2:#4c1d95;
     --orange:#f6511d;
-    --orange-light:#ff7c46;
-    --white:#ffffff;
+    --orange2:#ff7f50;
 }
 
 *{
@@ -28,18 +27,24 @@ body{
     background:#f7f7f7;
 }
 
+/* الخلفية الرئيسية */
+
 .hero{
-     min-height:65vh;
+
+    position:relative;
+
+    height:650px;      /* ارتفاع الخلفية */
 
     background:
     linear-gradient(
-    rgba(0,0,0,0.45),
-    rgba(0,0,0,0.45)
+        rgba(37,0,92,0.45),
+        rgba(37,0,92,0.45)
     ),
-    url("final logo.jpg");
+    url("CHBACK.png");
 
-    background-size:80%;
-    background-position:center;
+    background-size:cover;      /* حجم الصورة */
+    background-position:center; /* مكان الصورة */
+    background-repeat:no-repeat;
 
     display:flex;
     flex-direction:column;
@@ -47,66 +52,156 @@ body{
     align-items:center;
 
     text-align:center;
-    padding:40px 20px;
+
+    color:white;
 }
 
-.logo{
-    width:420px;
-    max-width:90%;
-    margin-bottom:25px;
+/* الشعار */
+
+.logo-corner{
+
+    position:absolute;
+
+    top:20px;
+    right:20px;
+
+    background:white;
+
+    padding:10px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.25);
+
+}
+
+.logo-corner img{
+
+    width:220px;   /* حجم الشعار */
+
+    height:auto;
+
+    display:block;
 }
 
 .hero h1{
-    font-size:42px;
-    margin-bottom:10px;
+
+    font-size:48px;
+    margin-bottom:15px;
+
+    text-shadow:0 2px 10px rgba(0,0,0,.4);
 }
 
 .hero p{
-    font-size:22px;
-    margin-bottom:30px;
+
+    font-size:24px;
+
+    text-shadow:0 2px 10px rgba(0,0,0,.4);
 }
 
+/* البطاقات */
+
 .cards{
+
     max-width:1200px;
-    margin:-70px auto 50px;
+
+    margin:-60px auto 60px;
+
     padding:0 20px;
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
 }
 
 .card{
-    background:white;
+
     border-radius:20px;
-    padding:30px;
+
+    padding:35px;
+
+    color:white;
+
+    text-decoration:none;
+
     text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,0.12);
-    transition:0.3s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    transition:.3s;
 }
 
 .card:hover{
+
     transform:translateY(-8px);
 }
 
-.card a{
-    text-decoration:none;
-    color:#2c0a6b;
-    font-size:22px;
-    font-weight:bold;
-}
-
 .icon{
-    font-size:50px;
+
+    font-size:55px;
+
     display:block;
+
     margin-bottom:15px;
 }
 
+.card-title{
+
+    font-size:24px;
+
+    font-weight:bold;
+}
+
+/* ألوان من روح الشعار */
+
+.clinics{
+    background:#25005c;
+}
+
+.locations{
+    background:#4c1d95;
+}
+
+.services{
+    background:#f6511d;
+}
+
+.contact{
+    background:#ff7f50;
+}
+
 footer{
-    background:#2c0a6b;
+
+    background:#25005c;
+
     color:white;
+
     text-align:center;
+
     padding:20px;
+}
+
+@media(max-width:768px){
+
+.hero{
+    height:500px;
+}
+
+.logo-corner img{
+    width:150px;
+}
+
+.hero h1{
+    font-size:30px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
 }
 
 </style>
@@ -117,41 +212,37 @@ footer{
 
 <section class="hero">
 
-<p>
-بوابة المراكز والخدمات الطبية
-</p>
+    <div class="final logo.jpg">
+        final logo.jpg
+    </div>
+
+    <h1>جمعية تنظيم الأسرة السورية</h1>
+
+    <p>بوابة المراكز والخدمات الطبية</p>
 
 </section>
 
 <div class="cards">
 
-<div class="card">
-clinics.html
-<span class="icon">🩺</span>
-العيادات
-</a>
-</div>
+    clinics
+        <span class="icon">🩺</span>
+        <div class="card-title">العيادات</div>
+    </a>
 
-<div class="card">
-locations.html
-<span class="icon">📍</span>
-مواقع المراكز
-</a>
-</div>
+    locations
+        <span class="icon">📍</span>
+        <div class="card-title">مواقع المراكز</div>
+    </a>
 
-<div class="card">
-services.html
-<span class="icon">🏥</span>
-الخدمات
-</a>
-</div>
+    services
+        <span class="icon">🏥</span>
+        <div class="card-title">الخدمات</div>
+    </a>
 
-<div class="card">
-contact.html
-<span class="icon">📞</span>
-اتصل بنا
-</a>
-</div>
+    contact
+        <span class="icon">📞</span>
+        <div class="card-title">اتصل بنا</div>
+    </a>
 
 </div>
 
@@ -160,5 +251,4 @@ SFPA © 2026
 </footer>
 
 </body>
-
 </html>
