@@ -4,14 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خدماتنا - جمعية تنظيم الأسرة السورية</title>
+<title>الرئيسية - جمعية تنظيم الأسرة السورية</title>
 
-<!-- استدعاء خط Cairo الاحترافي -->
+<!-- خط Cairo -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<!-- استدعاء أيقونات FontAwesome الاحترافية -->
+<!-- أيقونات FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
@@ -20,7 +20,6 @@
     --purple: #25005c;
     --orange: #f6511d;
     --text-dark: #222222;
-    --green-badge: #2e7d32;
 }
 
 * {
@@ -38,213 +37,122 @@ body {
     flex-direction: column;
 }
 
-/* الهيدر والعنوان */
+/* الهيدر */
 header {
     background: linear-gradient(135deg, var(--purple), #3b008f);
     color: white;
-    padding: 35px 20px;
+    padding: 40px 20px;
     text-align: center;
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-.back-btn {
+.logo-img {
     position: absolute;
-    right: 20px;
+    left: 25px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    max-height: 65px;
+    width: auto;
+    object-fit: contain;
 }
 
 header h1 {
     font-size: 32px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    font-weight: 800;
 }
 
 header p {
     font-size: 16px;
-    opacity: 0.92;
+    opacity: 0.9;
 }
 
-/* المحتوى الرئيسي */
+/* شبكة الخيارات الرئيسية */
 main {
     flex: 1;
-    max-width: 1100px;
+    max-width: 1000px;
     width: 100%;
-    margin: 30px auto;
+    margin: 40px auto;
     padding: 0 20px;
 }
 
-/* أزرار التصفية السريعة */
-.categories-filter {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 35px;
-}
-
-.cat-btn {
-    background: white;
-    border: 2px solid #e2e8f0;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-dark);
-    cursor: pointer;
-    transition: all 0.25s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-}
-
-.cat-btn i {
-    color: var(--purple);
-}
-
-.cat-btn:hover {
-    border-color: var(--orange);
-    color: var(--orange);
-}
-
-.cat-btn.active {
-    background: var(--purple);
-    color: white;
-    border-color: var(--purple);
-    box-shadow: 0 6px 15px rgba(37, 0, 92, 0.2);
-}
-
-.cat-btn.active i {
-    color: white;
-}
-
-/* شبكة الكروت */
-.services-grid {
+.main-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
-.service-card {
-    background: white;
+.card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-    border: 1px solid #edf2f7;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
 }
 
-.service-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    border-color: var(--orange);
 }
 
-/* الوسم المجاني */
-.free-badge {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: #e8f5e9;
-    color: var(--green-badge);
-    border: 1px solid #c8e6c9;
-    font-size: 12px;
-    font-weight: 800;
-    padding: 4px 12px;
-    border-radius: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.service-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.service-icon {
-    width: 55px;
-    height: 55px;
-    border-radius: 16px;
-    background: rgba(37, 0, 92, 0.08);
+.card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(37, 0, 92, 0.1);
     color: var(--purple);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
-    flex-shrink: 0;
+    font-size: 30px;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
 }
 
-.service-title {
-    font-size: 20px;
-    font-weight: 800;
+.card:hover .card-icon {
+    background: var(--orange);
+    color: white;
+}
+
+.card h3 {
+    font-size: 22px;
     color: var(--purple);
-    line-height: 1.3;
-    padding-left: 60px; /* مسافة تجنباً للتداخل مع الوسم */
+    margin-bottom: 12px;
+    font-weight: 700;
 }
 
-.service-list {
-    list-style: none;
-    margin-bottom: 20px;
-    flex: 1;
-}
-
-.service-list li {
+.card p {
     font-size: 14px;
-    color: #4a5568;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    line-height: 1.5;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
-.service-list li i {
-    color: var(--orange);
-    margin-top: 4px;
-    font-size: 12px;
-}
-
-/* زر البحث عن المركز والشكاوى */
-.find-clinic-btn {
+.card-btn {
     background: var(--purple);
     color: white;
     text-decoration: none;
-    text-align: center;
-    padding: 12px 18px;
+    padding: 12px 20px;
     border-radius: 12px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     transition: background 0.3s ease;
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    margin-top: auto;
 }
 
-.find-clinic-btn:hover {
+.card-btn:hover {
     background: var(--orange);
 }
 
@@ -295,20 +203,24 @@ footer {
     margin-top: auto;
 }
 
+/* الاستجابة للهواتف المحمولة لتفادي تداخل اللوغو مع النص */
 @media (max-width: 600px) {
-    .back-btn {
+    header {
+        padding-top: 20px;
+        padding-bottom: 25px;
+    }
+    .logo-img {
         position: static;
-        display: inline-block;
-        margin-bottom: 12px;
         transform: none;
+        display: block;
+        margin: 0 auto 12px auto;
+        max-height: 55px;
     }
-    .service-title {
-        padding-left: 0;
-        margin-top: 25px;
+    header h1 {
+        font-size: 24px;
     }
-    .free-badge {
-        top: 15px;
-        left: 15px;
+    header p {
+        font-size: 14px;
     }
 }
 
@@ -318,163 +230,67 @@ footer {
 <body>
 
 <header>
-    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> الرئيسية</a>
-    <h1>خدمات الجمعية الطبية والتوعوية</h1>
-    <p>جميع خدماتنا صحية متكاملة، ذات جودة عالية، ومتاحة للجميع مجاناً</p>
+    <!-- اللوغو موجود في اليسار للشاشات الكبيرة، وفي الأعلى للموبايل تجنباً للتداخل -->
+    <img src="logo.png" alt="شعار الجمعية" class="logo-img">
+    <h1>جمعية تنظيم الأسرة السورية</h1>
+    <p>مرحباً بكم في البوابة الرقمية لمراكز وخدمات الجمعية</p>
 </header>
 
 <main>
+    <div class="main-grid">
 
-    <!-- الفلاتر السريعة -->
-    <div class="categories-filter">
-        <button class="cat-btn active" onclick="filterServices('all', this)"><i class="fa-solid fa-border-all"></i> جميع الخدمات</button>
-        <button class="cat-btn" onclick="filterServices('reproductive', this)"><i class="fa-solid fa-person-pregnant"></i> الصحة الإنجابية والنسائية</button>
-        <button class="cat-btn" onclick="filterServices('family', this)"><i class="fa-solid fa-pills"></i> تنظيم الأسرة</button>
-        <button class="cat-btn" onclick="filterServices('child', this)"><i class="fa-solid fa-baby"></i> صحة الطفل</button>
-        <button class="cat-btn" onclick="filterServices('support', this)"><i class="fa-solid fa-hand-holding-heart"></i> الدعم النفسي والحماية</button>
-        <button class="cat-btn" onclick="filterServices('specialized', this)"><i class="fa-solid fa-microscope"></i> الفحوصات والمخابر</button>
-    </div>
-
-    <!-- شبكة عرض الخدمات -->
-    <div class="services-grid">
-
-        <!-- كرت 1: تنظيم الأسرة -->
-        <div class="service-card" data-category="family">
-            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+        <!-- كرت المراكز والعيادات -->
+        <div class="card">
             <div>
-                <div class="service-header">
-                    <div class="service-icon"><i class="fa-solid fa-pills"></i></div>
-                    <div class="service-title">خدمات تنظيم الأسرة</div>
-                </div>
-                <ul class="service-list">
-                    <li><i class="fa-solid fa-check-double"></i> تقديم المشورة والاستشارات الطبية حول وسائل تنظيم الأسرة.</li>
-                    <li><i class="fa-solid fa-check-double"></i> صرف واستشارة حبوب منع الحمل (البسيطة والمركبة).</li>
-                    <li><i class="fa-solid fa-check-double"></i> تقديم وتركيب وإزالة وسائل اللولب والغرسات الجلدية.</li>
-                    <li><i class="fa-solid fa-check-double"></i> توفير الحقن ووسائل منع الحمل قصيرة وطويلة المفعول.</li>
-                </ul>
+                <div class="card-icon"><i class="fa-solid fa-hospital-user"></i></div>
+                <h3>المراكز والعيادات</h3>
+                <p>استعرض العيادات الثابتة، العيادات المتنقلة، ومراكز تمكين المرأة والشباب حسب المحافظة.</p>
             </div>
-            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+            <a href="clinics.html" class="card-btn"><i class="fa-solid fa-list-check"></i> استعراض المراكز</a>
         </div>
 
-        <!-- كرت 2: الصحة الإنجابية والنسائية -->
-        <div class="service-card" data-category="reproductive">
-            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+        <!-- كرت الخريطة التفاعلية -->
+        <div class="card">
             <div>
-                <div class="service-header">
-                    <div class="service-icon"><i class="fa-solid fa-person-pregnant"></i></div>
-                    <div class="service-title">الصحة الإنجابية والولادة</div>
-                </div>
-                <ul class="service-list">
-                    <li><i class="fa-solid fa-check-double"></i> معاينات ورعاية صحة الحوامل ومتابعة ما قبل وما بعد الولادة.</li>
-                    <li><i class="fa-solid fa-check-double"></i> التصوير بالموجات فوق الصوتية (الإيكو) لمتابعة الحمل.</li>
-                    <li><i class="fa-solid fa-check-double"></i> التشخيص والمعالجة لالأمراض النسائية المختلفة والإفرازات.</li>
-                    <li><i class="fa-solid fa-check-double"></i> استشارات وخدمات التغذية والإرضاع الطبيعي.</li>
-                </ul>
+                <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <h3>مواقع المراكز</h3>
+                <p>استكشف مواقع مراكزنا وعياداتنا على الخريطة التفاعلية بدقة عالية للوصول المباشر.</p>
             </div>
-            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+            <a href="locations.html" class="card-btn"><i class="fa-solid fa-earth-asia"></i> فتح الخريطة</a>
         </div>
 
-        <!-- كرت 3: صحة الطفل والتغذية -->
-        <div class="service-card" data-category="child">
-            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+        <!-- كرت الخدمات -->
+        <div class="card">
             <div>
-                <div class="service-header">
-                    <div class="service-icon"><i class="fa-solid fa-baby"></i></div>
-                    <div class="service-title">طب وصحة الأطفال</div>
-                </div>
-                <ul class="service-list">
-                    <li><i class="fa-solid fa-check-double"></i> المعاينات الطبية الدورية واستشارات طب الأطفال العام.</li>
-                    <li><i class="fa-solid fa-check-double"></i> المسح التغذوي وعلاج حالات سوء التغذية الحاد.</li>
-                    <li><i class="fa-solid fa-check-double"></i> تقديم الفيتامينات والمغذيات الدقيقة المخصصة للأطفال.</li>
-                    <li><i class="fa-solid fa-check-double"></i> تقديم استشارات رعاية الطفولة المبكرة والنمو السليم.</li>
-                </ul>
+                <div class="card-icon"><i class="fa-solid fa-hand-holding-medical"></i></div>
+                <h3>خدماتنا الطبية</h3>
+                <p>تعرف على باقة الخدمات الصحية والإنجابية والدعم النفسي المقدمة مجاناً في مراكزنا.</p>
             </div>
-            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+            <a href="services.html" class="card-btn"><i class="fa-solid fa-stethoscope"></i> استعراض الخدمات</a>
         </div>
 
-        <!-- كرت 4: الكشف المبكر عن الأورام -->
-        <div class="service-card" data-category="specialized">
-            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
+        <!-- كرت الشكاوى والمقترحات (الزر المستبدل) -->
+        <div class="card">
             <div>
-                <div class="service-header">
-                    <div class="service-icon"><i class="fa-solid fa-ribbon"></i></div>
-                    <div class="service-title">الكشف المبكر عن أورام الثدي</div>
-                </div>
-                <ul class="service-list">
-                    <li><i class="fa-solid fa-check-double"></i> الفحص السريري واليدوي للثدي والتوعية بالتقصي الذاتي.</li>
-                    <li><i class="fa-solid fa-check-double"></i> التصوير الشعاعي للثدي عبر أجهزة الماموغرافي.</li>
-                    <li><i class="fa-solid fa-check-double"></i> إيكو الثدي والمتابعة الطبية الاختصاصية للحالات.</li>
-                </ul>
+                <div class="card-icon"><i class="fa-solid fa-comment-dots"></i></div>
+                <h3>الشكاوى والمقترحات</h3>
+                <p>صوتكم يهمنا.. شاركونا ملاحظاتكم وآراءكم حول جودة الخدمات المقدمة بكل سرية وأمان.</p>
             </div>
-            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
-        </div>
-
-        <!-- كرت 5: الدعم النفسي والحماية (تمكين المرأة) -->
-        <div class="service-card" data-category="support">
-            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
-            <div>
-                <div class="service-header">
-                    <div class="service-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                    <div class="service-title">الدعم النفسي والاجتماعي والحماية</div>
-                </div>
-                <ul class="service-list">
-                    <li><i class="fa-solid fa-check-double"></i> جلسات الدعم النفسي الاجتماعي (PSS) واستشارات الصحة العقلية.</li>
-                    <li><i class="fa-solid fa-check-double"></i> خدمات الاستشارة النفسية من قبل أطباء ومعالجين متخصصين.</li>
-                    <li><i class="fa-solid fa-check-double"></i> دعم وتمكين المرأة وإدارة حالات العنف القائم على النوع الاجتماعي.</li>
-                    <li><i class="fa-solid fa-check-double"></i> الإسعافات الأولية النفسية والإحالة للخدمات المتخصصة.</li>
-                </ul>
-            </div>
-            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
-        </div>
-
-        <!-- كرت 6: المخابر والفحوصات الطبية -->
-        <div class="service-card" data-category="specialized">
-            <span class="free-badge"><i class="fa-solid fa-check"></i> مجاناً 100%</span>
-            <div>
-                <div class="service-header">
-                    <div class="service-icon"><i class="fa-solid fa-flask"></i></div>
-                    <div class="service-title">الخدمات المخبرية والتشخيصية</div>
-                </div>
-                <ul class="service-list">
-                    <li><i class="fa-solid fa-check-double"></i> إجراء تحاليل واختبارات الحمل المخبرية المباشرة.</li>
-                    <li><i class="fa-solid fa-check-double"></i> التقصي والتشخيص السريع للأمراض المنقولة جنسياً (STI/RTI).</li>
-                    <li><i class="fa-solid fa-check-double"></i> الفحوصات المخبرية الخاصة بالصحة الإنجابية والنسائية.</li>
-                </ul>
-            </div>
-            <a href="clinics.html" class="find-clinic-btn"><i class="fa-solid fa-location-dot"></i> ابحث عن أقرب مركز يقدم هذه الخدمة</a>
+            <a href="https://wa.me/963933301252" target="_blank" class="card-btn"><i class="fa-brands fa-whatsapp"></i> تواصل للشكاوى</a>
         </div>
 
     </div>
-
 </main>
 
-<!-- أزرار التواصل للشكاوى عائمة بالأسفل -->
+<!-- الأزرار العائمة للاتصال السريع -->
 <div class="floating-contact">
-    <a href="https://wa.me/963933301252" target="_blank" class="float-btn whatsapp" title="الشكاوى عبر الواتساب"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="tel:+963933301252" class="float-btn phone" title="الاتصال بخط الشكاوى"><i class="fa-solid fa-phone"></i></a>
+    <a href="https://wa.me/963933301252" target="_blank" class="float-btn whatsapp" title="تواصل عبر الواتساب"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="tel:+963933301252" class="float-btn phone" title="اتصال مباشر"><i class="fa-solid fa-phone"></i></a>
 </div>
 
 <footer>
     SFPA © 2026
 </footer>
-
-<script>
-function filterServices(category, btnElement) {
-    // تحديث الأزرار النشطة
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btnElement.classList.add('active');
-
-    // تصفية الكروت
-    const cards = document.querySelectorAll('.service-card');
-    cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
-</script>
 
 </body>
 </html>
