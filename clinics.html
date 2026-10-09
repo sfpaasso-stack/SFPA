@@ -208,12 +208,7 @@ main {
 
 .center-card {
     border-bottom: 1px solid #f0f0f0;
-    padding: 16px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
+    padding: 18px 0;
 }
 
 .center-card:last-child {
@@ -223,7 +218,7 @@ main {
 .center-info h3 {
     font-size: 18px;
     color: var(--purple);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -236,6 +231,7 @@ main {
 .center-info p {
     font-size: 14px;
     color: #555;
+    margin-bottom: 4px;
     display: flex;
     align-items: flex-start;
     gap: 8px;
@@ -243,25 +239,7 @@ main {
 
 .center-info p i {
     margin-top: 4px;
-    color: #888;
-}
-
-.map-btn {
-    background: var(--purple);
-    color: white;
-    text-decoration: none;
-    padding: 8px 18px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    transition: background 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.map-btn:hover {
-    background: var(--orange);
+    color: var(--purple);
 }
 
 .placeholder-text {
@@ -287,15 +265,6 @@ footer {
         display: inline-block;
         margin-bottom: 10px;
         transform: none;
-    }
-    .center-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .map-btn {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
     }
 }
 
@@ -360,10 +329,13 @@ footer {
 </footer>
 
 <script>
+// المحافظات الرئيسية
+const allGovs = ["دمشق", "حلب", "ريف دمشق", "حمص", "حماه", "اللاذقية", "الحسكة", "دير الزور", "طرطوس", "إدلب", "درعا", "السويداء", "القنيطرة"];
+
 // قاعدة البيانات الشاملة للمراكز
 const db = [
     // دمشق
-    { type: "عيادة ثابتة", gov: "دمشق", name: "عيادة - القدم", location: "القدم: ضمن مستوصف الدولة-جانب بلدية القدم بالقرب من مخفر الشرطة" },
+    { type: "عيادة ثابتة", gov: "دمشق", name: "عيادة - القدم", location: "القدم – م: ضمن مستوصف الدولة-جانب بلدية القدم بالقرب من مخفر الشرطة" },
     { type: "عيادة ثابتة", gov: "دمشق", name: "عيادة - الحلبوني", location: "الحلبوني- شارع المكتبات-جانب دار ابن كثير-بناء دار النخبةوالمجد" },
 
     // ريف دمشق
@@ -425,7 +397,7 @@ const db = [
     { type: "عيادة ثابتة", gov: "دير الزور", name: "عيادة - الميادين", location: "الميادين بالقرب من المحكمة" },
     { type: "مركز دعم وتمكين المرأة", gov: "دير الزور", name: "مركز دعم وتمكين المرأة - دير الزور", location: "بعاجين - جانب حديقة النصارى" },
 
-    // ---------------- مراكز الشباب المحدثة بالعناوين ----------------
+    // مراكز الشباب
     { type: "مركز شباب", gov: "دمشق", name: "مركز شباب - دمشق", location: "الحلبوني- شارع المكتبات-جانب دار ابن كثير-بناء دار النخبةوالمجد" },
     { type: "مركز شباب", gov: "ريف دمشق", name: "مركز شباب - ريف دمشق", location: "جرمانا- البلدية القديمة- مقابل الملعب البلدي-دخلة صيدلية أميرة كركوش" },
     { type: "مركز شباب", gov: "درعا", name: "مركز شباب - درعا", location: "درعا حي الكاشف - العيادات الشاملة" },
@@ -437,7 +409,17 @@ const db = [
     { type: "مركز شباب", gov: "الحسكة", name: "مركز شباب - الحسكة", location: "شارع القامشلي- فوق مطعم سيزر" },
     { type: "مركز شباب", gov: "إدلب", name: "مركز شباب - إدلب", location: "القصور - جانب جامع الروضة" },
     { type: "مركز شباب", gov: "طرطوس", name: "مركز شباب - طرطوس", location: "المشروع السادس شارع دبي" },
-    { type: "مركز شباب", gov: "اللاذقية", name: "مركز شباب - اللاذقية", location: "حارة السجن- جانب دائرة الامتحانات" }
+    { type: "مركز شباب", gov: "اللاذقية", name: "مركز شباب - اللاذقية", location: "حارة السجن- جانب دائرة الامتحانات" },
+
+    // ---------------- العيادات المتنقلة ----------------
+    { type: "عيادة متنقلة", gov: "ريف دمشق", name: "فريق العيادات المتنقلة (3 فرق)", isMobile: true },
+    { type: "عيادة متنقلة", gov: "حمص", name: "فريق العيادات المتنقلة (فريق 1)", isMobile: true },
+    { type: "عيادة متنقلة", gov: "اللاذقية", name: "فريق العيادات المتنقلة (فريق 1)", isMobile: true },
+    { type: "عيادة متنقلة", gov: "طرطوس", name: "فريق العيادات المتنقلة (فريق 1)", isMobile: true },
+    { type: "عيادة متنقلة", gov: "درعا", name: "فريق العيادات المتنقلة (فريق 1)", isMobile: true },
+    { type: "عيادة متنقلة", gov: "السويداء", name: "فريق العيادات المتنقلة (فريق 1)", isMobile: true },
+    { type: "عيادة متنقلة", gov: "إدلب", name: "فريق العيادات المتنقلة (فريقين 2)", isMobile: true },
+    { type: "عيادة متنقلة", gov: "الحسكة", name: "فريق العيادات المتنقلة (فريق 1)", isMobile: true }
 ];
 
 let currentType = '';
@@ -450,12 +432,17 @@ function selectType(type, btnElement) {
     document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
     btnElement.classList.add('active');
 
-    const availableGovs = [...new Set(db.filter(item => item.type === type).map(item => item.gov))];
-
     const govContainer = document.getElementById('govContainer');
     const resultsContainer = document.getElementById('resultsContainer');
 
     resultsContainer.innerHTML = `<div class="placeholder-text">الرجاء اختيار المحافظة لعرض المراكز المتاحة.</div>`;
+
+    let availableGovs = [];
+    if (type === "عيادة متنقلة") {
+        availableGovs = allGovs;
+    } else {
+        availableGovs = [...new Set(db.filter(item => item.type === type).map(item => item.gov))];
+    }
 
     if (availableGovs.length === 0) {
         govContainer.innerHTML = `<div class="placeholder-text" style="padding:10px; grid-column: 1/-1;">لا تتوفر مراكز من هذا النوع حالياً في أي محافظة.</div>`;
@@ -477,6 +464,33 @@ function selectGov(gov, btnElement) {
     btnElement.classList.add('active');
 
     const resultsContainer = document.getElementById('resultsContainer');
+
+    // العيادة المتنقلة
+    if (currentType === "عيادة متنقلة") {
+        const mobileData = db.find(item => item.type === "عيادة متنقلة" && item.gov === gov);
+        
+        if (mobileData) {
+            resultsContainer.innerHTML = `
+                <div class="center-card">
+                    <div class="center-info">
+                        <h3><i class="fa-solid fa-truck-medical"></i> ${mobileData.name}</h3>
+                        <p><i class="fa-solid fa-route"></i> <strong>نطاق التغطية:</strong> تغطي مناطق وقرى محافظة ${gov} والأرياف البعيدة حسب خطة الانتشار الميداني.</p>
+                        <p><i class="fa-regular fa-calendar-check"></i> <strong>جدول الجولات الميدانية:</strong> من الأحد إلى الخميس (9:00 صباحاً – 3:00 عصراً)</p>
+                    </div>
+                </div>
+            `;
+        } else {
+            resultsContainer.innerHTML = `
+                <div class="placeholder-text">
+                    <i class="fa-solid fa-circle-info" style="font-size:24px; color:var(--orange); margin-bottom:10px; display:block;"></i>
+                    لا تتواجد فرق عيادات متنقلة حالياً في محافظة <strong>${gov}</strong>.
+                </div>
+            `;
+        }
+        return;
+    }
+
+    // المراكز الثابتة وبقية الخدمات بدون زِر خريطة
     const filteredCenters = db.filter(item => item.type === currentType && item.gov === gov);
 
     if (filteredCenters.length === 0) {
@@ -492,7 +506,6 @@ function selectGov(gov, btnElement) {
                     <h3><i class="fa-solid fa-building-circle-check"></i> ${center.name}</h3>
                     <p><i class="fa-solid fa-location-dot"></i> ${center.location}</p>
                 </div>
-                <a href="https://maps.google.com" target="_blank" class="map-btn"><i class="fa-solid fa-map-location-dot"></i> الموقع على الخريطة</a>
             </div>
         `;
     });
