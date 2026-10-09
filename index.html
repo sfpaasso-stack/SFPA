@@ -11,9 +11,9 @@
 
 :root{
     --purple:#25005c;
-    --purple2:#4c1d95;
+    --purple-light:#4c1d95;
     --orange:#f6511d;
-    --orange2:#ff7f50;
+    --orange-light:#ff7f50;
 }
 
 *{
@@ -24,7 +24,7 @@
 
 body{
     font-family:Tahoma, Arial, sans-serif;
-    background:#f7f7f7;
+    background:#f5f5f5;
 }
 
 /* الخلفية الرئيسية */
@@ -33,17 +33,17 @@ body{
 
     position:relative;
 
-    height:650px;      /* ارتفاع الخلفية */
+    height:600px;
 
     background:
     linear-gradient(
-        rgba(37,0,92,0.45),
-        rgba(37,0,92,0.45)
+        rgba(37,0,92,.45),
+        rgba(37,0,92,.45)
     ),
     url("CHBACK.png");
 
-    background-size:cover;      /* حجم الصورة */
-    background-position:center; /* مكان الصورة */
+    background-size:cover;
+    background-position:center;
     background-repeat:no-repeat;
 
     display:flex;
@@ -56,7 +56,7 @@ body{
     color:white;
 }
 
-/* الشعار */
+/* اللوغو */
 
 .logo-corner{
 
@@ -67,83 +67,82 @@ body{
 
     background:white;
 
-    padding:10px;
+    padding:12px;
 
     border-radius:15px;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.25);
-
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
 }
 
 .logo-corner img{
 
-    width:220px;   /* حجم الشعار */
-
-    height:auto;
+    width:180px;
 
     display:block;
 }
 
+/* العنوان */
+
 .hero h1{
 
-    font-size:48px;
+    font-size:52px;
+
     margin-bottom:15px;
 
-    text-shadow:0 2px 10px rgba(0,0,0,.4);
+    text-shadow:0 3px 10px rgba(0,0,0,.5);
 }
 
 .hero p{
 
     font-size:24px;
 
-    text-shadow:0 2px 10px rgba(0,0,0,.4);
+    text-shadow:0 3px 10px rgba(0,0,0,.5);
 }
 
-/* البطاقات */
+/* الصناديق */
 
 .cards{
 
     max-width:1200px;
 
-    margin:-60px auto 60px;
+    margin:-60px auto 50px;
 
     padding:0 20px;
 
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(240px,1fr));
+    repeat(auto-fit,minmax(220px,1fr));
 
     gap:25px;
 }
 
 .card{
 
-    border-radius:20px;
-
     padding:35px;
 
-    color:white;
+    border-radius:20px;
 
     text-decoration:none;
 
+    color:white;
+
     text-align:center;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.15);
 
     transition:.3s;
 }
 
 .card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-10px);
 }
 
 .icon{
 
     font-size:55px;
-
-    display:block;
 
     margin-bottom:15px;
 }
@@ -155,7 +154,7 @@ body{
     font-weight:bold;
 }
 
-/* ألوان من روح الشعار */
+/* ألوان الهوية */
 
 .clinics{
     background:#25005c;
@@ -173,6 +172,8 @@ body{
     background:#ff7f50;
 }
 
+/* الفوتر */
+
 footer{
 
     background:#25005c;
@@ -184,21 +185,27 @@ footer{
     padding:20px;
 }
 
+/* الموبايل */
+
 @media(max-width:768px){
 
 .hero{
+
     height:500px;
 }
 
 .logo-corner img{
-    width:150px;
+
+    width:120px;
 }
 
 .hero h1{
+
     font-size:30px;
 }
 
 .hero p{
+
     font-size:18px;
 }
 
@@ -212,7 +219,7 @@ footer{
 
 <section class="hero">
 
-    <div class="final logo.jpg">
+    <div class="logo-corner">
         final logo.jpg
     </div>
 
@@ -224,23 +231,23 @@ footer{
 
 <div class="cards">
 
-    clinics
-        <span class="icon">🩺</span>
+    clinics.html
+        <div class="icon">🩺</div>
         <div class="card-title">العيادات</div>
     </a>
 
-    locations
-        <span class="icon">📍</span>
+    locations.html
+        <div class="icon">📍</div>
         <div class="card-title">مواقع المراكز</div>
     </a>
 
-    services
-        <span class="icon">🏥</span>
+    services.html
+        <div class="icon">🏥</div>
         <div class="card-title">الخدمات</div>
     </a>
 
-    contact
-        <span class="icon">📞</span>
+    contact.html
+        <div class="icon">📞</div>
         <div class="card-title">اتصل بنا</div>
     </a>
 
@@ -251,4 +258,5 @@ SFPA © 2026
 </footer>
 
 </body>
+
 </html>
