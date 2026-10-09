@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المراكز والعيادات - جمعية تنظيم الأسرة السورية</title>
+
+<!-- استدعاء خط Cairo الاحترافي -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --purple: #25005c;
+    --orange: #f6511d;
+    --text-dark: #222222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: #f8f9fa;
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* الهيدر والعنوان */
+header {
+    background: linear-gradient(135deg, var(--purple), #3b008f);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.back-btn {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* المحتوى الرئيسي */
+main {
+    flex: 1;
+    max-width: 1000px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.step-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--purple);
+    border-right: 4px solid var(--orange);
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* شبكة اختيار نوع المركز */
+.type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.type-btn {
+    background: white;
+    border: 2px solid #e2e8f0;
+    padding: 16px 12px;
+    border-radius: 16px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.type-btn:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    transform: translateY(-2px);
+}
+
+.type-btn.active {
+    background: var(--purple);
+    color: white;
+    border-color: var(--purple);
+    box-shadow: 0 6px 15px rgba(37, 0, 92, 0.25);
+}
+
+/* شبكة المحافظات */
+.gov-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.gov-btn {
+    background: white;
+    border: 2px solid #e2e8f0;
+    padding: 12px 10px;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.gov-btn:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.gov-btn.active {
+    background: var(--orange);
+    color: white;
+    border-color: var(--orange);
+    box-shadow: 0 4px 12px rgba(246, 81, 29, 0.3);
+}
+
+/* حاوية عرض المراكز والعيادات */
+.results-container {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    min-height: 180px;
+}
+
+.center-card {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.center-card:last-child {
+    border-bottom: none;
+}
+
+.center-info h3 {
+    font-size: 18px;
+    color: var(--purple);
+    margin-bottom: 4px;
+}
+
+.center-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+.map-btn {
+    background: var(--purple);
+    color: white;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.map-btn:hover {
+    background: var(--orange);
+}
+
+.placeholder-text {
+    text-align: center;
+    color: #888;
+    padding: 40px 0;
+    font-size: 15px;
+}
+
+/* الفوتر */
+footer {
+    background: var(--purple);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+@media (max-width: 600px) {
+    .back-btn {
+        position: static;
+        display: inline-block;
+        margin-bottom: 10px;
+        transform: none;
+    }
+    .center-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .map-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="back-btn">← الرئيسية</a>
+    <h1>المراكز والعيادات الطبية</h1>
+    <p>اختر نوع المركز ثم المحافظة لعرض المراكز المتاحة</p>
+</header>
+
+<main>
+
+    <!-- الخطوة 1: اختيار نوع المركز -->
+    <div class="step-title"><span>1️⃣</span> اختر نوع المركز</div>
+    <div class="type-grid">
+        <button class="type-btn" onclick="selectType('عيادة ثابتة', this)">🩺 عيادة ثابتة</button>
+        <button class="type-btn" onclick="selectType('مركز دعم وتمكين المرأة', this)">🌸 دعم وتمكين المرأة</button>
+        <button class="type-btn" onclick="selectType('مركز شباب', this)">👥 مركز شباب</button>
+        <button class="type-btn" onclick="selectType('مشفى', this)">🏥 مشفى</button>
+        <button class="type-btn" onclick="selectType('مخبر', this)">🔬 مخبر</button>
+        <button class="type-btn" onclick="selectType('عيادة متنقلة', this)">🚐 عيادة متنقلة</button>
+    </div>
+
+    <!-- الخطوة 2: اختيار المحافظة -->
+    <div class="step-title"><span>2️⃣</span> اختر المحافظة</div>
+    <div class="gov-grid" id="govContainer">
+        <div class="placeholder-text" style="padding:10px; grid-column: 1/-1;">الرجاء اختيار نوع المركز أولاً</div>
+    </div>
+
+    <!-- الخطوة 3: نتائج المراكز -->
+    <div class="step-title"><span>3️⃣</span> المراكز المتاحة</div>
+    <div class="results-container" id="resultsContainer">
+        <div class="placeholder-text">الرجاء حدد نوع المركز والمحافظة لعرض التفاصيل.</div>
+    </div>
+
+</main>
+
+<footer>
+    SFPA © 2026
+</footer>
+
+<script>
+// قاعدة البيانات الشاملة
+const db = [
+    // دمشق
+    { type: "عيادة ثابتة", gov: "دمشق", name: "عيادة - القدم", location: "محافظة دمشق - القدم" },
+    { type: "عيادة ثابتة", gov: "دمشق", name: "عيادة - الحلبوني", location: "محافظة دمشق - الحلبوني" },
+
+    // ريف دمشق
+    { type: "عيادة ثابتة", gov: "ريف دمشق", name: "عيادة - حفير تحتا", location: "محافظة ريف دمشق - حفير تحتا" },
+    { type: "عيادة ثابتة", gov: "ريف دمشق", name: "عيادة - جرمانا", location: "محافظة ريف دمشق - جرمانا" },
+    { type: "عيادة ثابتة", gov: "ريف دمشق", name: "عيادة - يبرود", location: "محافظة ريف دمشق - يبرود" },
+    { type: "عيادة ثابتة", gov: "ريف دمشق", name: "عيادة - دوما", location: "محافظة ريف دمشق - دوما" },
+    { type: "عيادة ثابتة", gov: "ريف دمشق", name: "وحدة حماية الأسرة - قدسيا", location: "محافظة ريف دمشق - قدسيا" },
+    { type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", name: "مركز دعم وتمكين المرأة - قدسيا", location: "محافظة ريف دمشق - قدسيا" },
+    { type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", name: "مركز دعم وتمكين المرأة - دوما", location: "محافظة ريف دمشق - دوما" },
+    { type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", name: "مركز دعم وتمكين المرأة - كفر بطنا", location: "محافظة ريف دمشق - كفر بطنا" },
+    { type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", name: "مركز دعم وتمكين المرأة - أشرفية صحنايا", location: "محافظة ريف دمشق - أشرفية صحنايا" },
+    { type: "مركز دعم وتمكين المرأة", gov: "ريف دمشق", name: "مركز دعم وتمكين المرأة - يبرود", location: "محافظة ريف دمشق - يبرود" },
+
+    // حلب
+    { type: "عيادة ثابتة", gov: "حلب", name: "عيادة - الزبدية", location: "محافظة حلب - الزبدية" },
+    { type: "عيادة ثابتة", gov: "حلب", name: "مركز تل حديا", location: "محافظة حلب - تل حديا" },
+    { type: "عيادة ثابتة", gov: "حلب", name: "مركز الشيخ سعيد", location: "محافظة حلب - الشيخ سعيد" },
+    { type: "عيادة ثابتة", gov: "حلب", name: "مركز الجبول", location: "محافظة حلب - الجبول" },
+    { type: "مركز دعم وتمكين المرأة", gov: "حلب", name: "مركز دعم وتمكين المرأة - حلب الرازي", location: "محافظة حلب - الرازي" },
+
+    // حمص
+    { type: "عيادة ثابتة", gov: "حمص", name: "عيادة - الخالدية", location: "محافظة حمص - الخالدية" },
+    { type: "عيادة ثابتة", gov: "حمص", name: "عيادة - الوعر", location: "محافظة حمص - الوعر" },
+    { type: "عيادة ثابتة", gov: "حمص", name: "عيادة - تدمر", location: "محافظة حمص - تدمر" },
+    { type: "عيادة ثابتة", gov: "حمص", name: "عيادة ودير بعلبة", location: "محافظة حمص - دير بعلبة" },
+    { type: "مخبر", gov: "حمص", name: "مخبر دير بعلبة", location: "محافظة حمص - دير بعلبة" },
+    { type: "مشفى", gov: "حمص", name: "مشفى دار السلام", location: "محافظة حمص" },
+    { type: "عيادة ثابتة", gov: "حمص", name: "المستودع", location: "محافظة حمص" },
+    { type: "مركز دعم وتمكين المرأة", gov: "حمص", name: "مركز دعم وتمكين المرأة - الوعر", location: "محافظة حمص - الوعر" },
+
+    // حماه
+    { type: "عيادة ثابتة", gov: "حماه", name: "عيادة - الظاهرية", location: "محافظة حماه - الظاهرية" },
+    { type: "عيادة ثابتة", gov: "حماه", name: "عيادة - الجلمة", location: "محافظة حماه - الجلمة" },
+    { type: "مركز دعم وتمكين المرأة", gov: "حماه", name: "مركز دعم وتمكين المرأة - حماة", location: "محافظة حماه" },
+
+    // اللاذقية
+    { type: "عيادة ثابتة", gov: "اللاذقية", name: "عيادة - جبلة", location: "محافظة اللاذقية - جبلة" },
+    { type: "عيادة ثابتة", gov: "اللاذقية", name: "عيادة - الرمل الشمالي", location: "محافظة اللاذقية - الرمل الشمالي" },
+    { type: "مركز دعم وتمكين المرأة", gov: "اللاذقية", name: "مركز دعم وتمكين المرأة - اللاذقية", location: "محافظة اللاذقية" },
+
+    // طرطوس
+    { type: "عيادة ثابتة", gov: "طرطوس", name: "عيادة - دوير الشيخ سعد", location: "محافظة طرطوس - دوير الشيخ سعد" },
+    { type: "مركز دعم وتمكين المرأة", gov: "طرطوس", name: "مركز دعم وتمكين المرأة - طرطوس", location: "محافظة طرطوس" },
+
+    // درعا
+    { type: "عيادة ثابتة", gov: "درعا", name: "عيادة - الكاشف", location: "محافظة درعا - الكاشف" },
+    { type: "مركز دعم وتمكين المرأة", gov: "درعا", name: "مركز دعم وتمكين المرأة - درعا", location: "محافظة درعا" },
+
+    // السويداء
+    { type: "عيادة ثابتة", gov: "السويداء", name: "عيادة - القصور", location: "محافظة السويداء - القصور" },
+    { type: "عيادة ثابتة", gov: "السويداء", name: "عيادة - الأمل", location: "محافظة السويداء - الأمل" },
+    { type: "مركز دعم وتمكين المرأة", gov: "السويداء", name: "مركز دعم وتمكين المرأة - السويداء", location: "محافظة السويداء" },
+
+    // القنيطرة
+    { type: "عيادة ثابتة", gov: "القنيطرة", name: "عيادة - خان أرنبة", location: "محافظة القنيطرة - خان أرنبة" },
+
+    // دير الزور
+    { type: "عيادة ثابتة", gov: "دير الزور", name: "عيادة - بعاجين", location: "محافظة دير الزور - بعاجين" },
+    { type: "عيادة ثابتة", gov: "دير الزور", name: "عيادة - الميادين", location: "محافظة دير الزور - الميادين" },
+    { type: "مركز دعم وتمكين المرأة", gov: "دير الزور", name: "مركز دعم وتمكين المرأة - دير الزور", location: "محافظة دير الزور" }
+];
+
+// إضافة مركز شباب لكل المحافظات تلقائياً
+const allGovs = ["دمشق", "حلب", "ريف دمشق", "حمص", "حماه", "اللاذقية", "الحسكة", "دير الزور", "طرطوس", "إدلب", "درعا", "السويداء", "القنيطرة"];
+allGovs.forEach(gov => {
+    db.push({
+        type: "مركز شباب",
+        gov: gov,
+        name: `مركز شباب - ${gov}`,
+        location: `محافظة ${gov}`
+    });
+});
+
+let currentType = '';
+let currentGov = '';
+
+function selectType(type, btnElement) {
+    currentType = type;
+    currentGov = ''; // إعادة ضبط المحافظة
+    
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    // استخراج المحافظات التي تملك هذا النوع فقط
+    const availableGovs = [...new Set(db.filter(item => item.type === type).map(item => item.gov))];
+
+    const govContainer = document.getElementById('govContainer');
+    const resultsContainer = document.getElementById('resultsContainer');
+
+    resultsContainer.innerHTML = `<div class="placeholder-text">الرجاء اختيار المحافظة لعرض المراكز المتاحة.</div>`;
+
+    if (availableGovs.length === 0) {
+        govContainer.innerHTML = `<div class="placeholder-text" style="padding:10px; grid-column: 1/-1;">لا تتوفر مراكز من هذا النوع حالياً في أي محافظة.</div>`;
+        return;
+    }
+
+    let html = '';
+    availableGovs.forEach(gov => {
+        html += `<button class="gov-btn" onclick="selectGov('${gov}', this)">${gov}</button>`;
+    });
+
+    govContainer.innerHTML = html;
+}
+
+function selectGov(gov, btnElement) {
+    currentGov = gov;
+
+    document.querySelectorAll('.gov-btn').forEach(b => b.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    const resultsContainer = document.getElementById('resultsContainer');
+    const filteredCenters = db.filter(item => item.type === currentType && item.gov === gov);
+
+    if (filteredCenters.length === 0) {
+        resultsContainer.innerHTML = `<div class="placeholder-text">لا توجد نتائج مطابقة.</div>`;
+        return;
+    }
+
+    let html = '';
+    filteredCenters.forEach(center => {
+        html += `
+            <div class="center-card">
+                <div class="center-info">
+                    <h3>🏢 ${center.name}</h3>
+                    <p>📍 ${center.location}</p>
+                </div>
+                <a href="https://maps.google.com" target="_blank" class="map-btn">الموقع على الخريطة 🗺️</a>
+            </div>
+        `;
+    });
+
+    resultsContainer.innerHTML = html;
+}
+</script>
+
+</body>
+</html>
