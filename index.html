@@ -25,14 +25,11 @@
 
 body{
     font-family:Tahoma, Arial, sans-serif;
-    background:#f7f7fb;
+    background:#f7f7f7;
 }
 
-/* القسم الرئيسي */
-
 .hero{
-
-    min-height:85vh;
+     min-height:85vh;
 
     background:
     linear-gradient(
@@ -51,133 +48,121 @@ body{
 
     text-align:center;
     padding:40px 20px;
-
-}
-
-/* الشعار */
-
-.logo-box{
-
-    background:white;
-    padding:20px;
-
-    border-radius:25px;
-
-    box-shadow:
-    0 10px 35px rgba(0,0,0,.25);
-
-    margin-bottom:30px;
-
 }
 
 .logo{
-
-    width:600px;
-    max-width:90vw;
-    height:auto;
-    display:block;
-
+    width:420px;
+    max-width:90%;
+    margin-bottom:25px;
 }
 
 .hero h1{
-
-    color:white;
-    font-size:48px;
+    font-size:42px;
     margin-bottom:10px;
-
 }
 
 .hero p{
-
-    color:white;
-    font-size:24px;
-
+    font-size:22px;
+    margin-bottom:30px;
 }
 
-/* البطاقات */
-
 .cards{
-
-    width:100%;
     max-width:1200px;
-
-    margin:-70px auto 60px;
+    margin:-70px auto 50px;
     padding:0 20px;
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:25px;
-
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
 
 .card{
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:22px;
-
-    padding:35px 25px;
-
+    background:white;
+    border-radius:20px;
+    padding:30px;
     text-align:center;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.15);
-
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
     transition:0.3s;
-
 }
 
 .card:hover{
-
     transform:translateY(-8px);
+}
 
+.card a{
+    text-decoration:none;
+    color:#2c0a6b;
+    font-size:22px;
+    font-weight:bold;
 }
 
 .icon{
-
-    font-size:55px;
+    font-size:50px;
     display:block;
     margin-bottom:15px;
-
-}
-
-.card-title{
-
-    font-size:24px;
-    font-weight:bold;
-
-}
-
-.clinics{
-    background:var(--purple);
-}
-
-.locations{
-    background:var(--purple-light);
-}
-
-.services{
-    background:var(--orange);
-}
-
-.contact{
-    background:var(--orange-light);
 }
 
 footer{
-
-    background:var(--purple);
-
+    background:#2c0a6b;
     color:white;
-
     text-align:center;
-
     padding:20px;
-
 }
 
-@media(max-width:768px){
+</style>
 
-.hero
+</head>
+
+<body>
+
+<section class="hero">
+
+final logo.jpg
+
+<h1>جمعية تنظيم الأسرة السورية</h1>
+
+<p>
+بوابة المراكز والخدمات الطبية
+</p>
+
+</section>
+
+<div class="cards">
+
+<div class="card">
+clinics.html
+<span class="icon">🩺</span>
+العيادات
+</a>
+</div>
+
+<div class="card">
+locations.html
+<span class="icon">📍</span>
+مواقع المراكز
+</a>
+</div>
+
+<div class="card">
+services.html
+<span class="icon">🏥</span>
+الخدمات
+</a>
+</div>
+
+<div class="card">
+contact.html
+<span class="icon">📞</span>
+اتصل بنا
+</a>
+</div>
+
+</div>
+
+<footer>
+SFPA © 2026
+</footer>
+
+</body>
+
+</html>
