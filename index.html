@@ -1,75 +1,141 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
-<title>مركز الخدمة</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>جمعية تنظيم الأسرة السورية</title>
 
 <style>
-body{
-font-family:Tahoma;
-background:#f5f5f5;
+
+*{
 margin:0;
-text-align:center;
+padding:0;
+box-sizing:border-box;
 }
 
-header{
-background:#008080;
+body{
+font-family:Tahoma, Arial;
+background:#f5f5f5;
+}
+
+.hero{
+height:70vh;
+background-image:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url("hero.jpg");
+background-size:cover;
+background-position:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
 color:white;
-padding:20px;
-font-size:30px;
+}
+
+.logo{
+width:320px;
+max-width:90%;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
 }
 
 .container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-padding:30px;
+max-width:1200px;
+margin:auto;
+padding:50px 20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
 }
 
 .card{
 background:white;
-width:250px;
-padding:25px;
-border-radius:15px;
-box-shadow:0 0 10px #ccc;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
 }
 
 .card a{
 text-decoration:none;
 font-size:22px;
-color:#008080;
 font-weight:bold;
+color:#2d005f;
 }
+
+footer{
+background:#2d005f;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<header>
-جمعية تنظيم الأسرة السورية
-</header>
+<section class="hero">
+
+logo.png
+
+<h1>جمعية تنظيم الأسرة السورية</h1>
+
+<p>
+دليل المراكز والخدمات الطبية
+</p>
+
+</section>
 
 <div class="container">
 
 <div class="card">
-<a href="clinics.html">🩺 عية</a>
+clinics.html
+🩺 العيادات
+</a>
 </div>
 
 <div class="card">
-services.html🏥 خدماتنا</a>
+locations.html
+📍 مواقع المراكز
+</a>
 </div>
 
 <div class="card">
-locations.html📍 مواقع المراكز</a>
+services.html
+🏥 الخدمات
+</a>
 </div>
 
 <div class="card">
-contact.html📞 اتصل بنا</a>
+contact.html
+📞 اتصل بنا
+</a>
 </div>
 
 </div>
+
+<footer>
+© Syrian Family Planning Association
+</footer>
 
 </body>
 </html>
