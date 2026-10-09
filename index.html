@@ -14,6 +14,7 @@
     --purple-light:#4c1d95;
     --orange:#f6511d;
     --orange-light:#ff7f50;
+    --card-text: #222222; /* لون الخط الداكن للكروت */
 }
 
 *{
@@ -24,34 +25,29 @@
 
 body{
     font-family:Tahoma, Arial, sans-serif;
-    background:#25005c;
+    background:#f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* الخلفية الرئيسية (تشمل العنوان والبطاقات) */
+/* الخلفية الرئيسية وتغطية الشاشة كاملاً */
 
-.main-bg{
-
+.hero{
     position:relative;
+    flex: 1;
+    min-height: calc(100vh - 50px); /* تأخذ معظم ارتفاع الشاشة عدا الفوتر البسيط */
 
     background:
     linear-gradient(
-        rgba(37,0,92,.45),
-        rgba(37,0,92,.45)
+        rgba(37,0,92,.15), /* الشفافية خفيفة جداً لظهور الصورة بوضوح */
+        rgba(37,0,92,.15)
     ),
     url("CHBACK.png");
 
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-}
-
-/* قسم العنوان */
-
-.hero{
-
-    position:relative;
-
-    height:450px;
 
     display:flex;
     flex-direction:column;
@@ -61,167 +57,115 @@ body{
     text-align:center;
 
     color:white;
+    padding: 20px;
 }
 
 /* اللوغو */
 
 .logo-corner{
-
     position:absolute;
-
     top:20px;
     left:20px;
-
     z-index:3;
-
     background:white;
-
     padding:12px;
-
     border-radius:15px;
-
     box-shadow:0 5px 20px rgba(0,0,0,.2);
 }
 
 .logo-corner img{
-
     width:180px;
     height:auto;
-
     display:block;
 }
 
 /* العنوان */
 
 .hero h1{
-
     font-size:52px;
-
     margin-bottom:15px;
-
-    text-shadow:0 3px 10px rgba(0,0,0,.5);
+    text-shadow:0 3px 10px rgba(0,0,0,.6);
 }
 
 .hero p{
-
     font-size:24px;
-
-    text-shadow:0 3px 10px rgba(0,0,0,.5);
+    text-shadow:0 3px 10px rgba(0,0,0,.6);
 }
 
-/* الصناديق */
+/* الصناديق/الكروت */
 
 .cards{
-
     position:relative;
     z-index:2;
-
+    width: 100%;
     max-width:1200px;
-
-    margin:0 auto;
-
-    padding:0 20px 70px;
-
+    margin: 40px auto 20px;
+    padding:0 20px;
     display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     gap:25px;
 }
 
 .card{
-
-    display:block;
-
-    padding:35px;
-
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:30px 20px;
     border-radius:20px;
-
     text-decoration:none;
-
-    color:white;
-
+    color: var(--card-text); /* تم تغيير لون الخط إلى الأسود */
+    background: white;
     text-align:center;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.25);
-
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
     transition:.3s;
 }
 
 .card:hover{
-
-    transform:translateY(-10px);
+    transform:translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,.3);
 }
 
 .icon{
-
-    font-size:55px;
-
-    margin-bottom:15px;
+    font-size:45px;
+    margin-bottom:12px;
+    color: var(--card-text); /* لون الأيقونة بالأسود */
 }
 
 .card-title{
-
-    font-size:24px;
-
+    font-size:20px;
     font-weight:bold;
+    color: var(--card-text); /* لون عنوان الكرت بالأسود */
 }
 
-/* ألوان الهوية */
-
-.clinics{
-    background:#FFFFFF
-}
-
-.locations{
-    background:#FFFFFF
-}
-
-.services{
-    background:#FFFFFF
-}
-
-.contact{
-    background:#FFFFFF
-}
-
-/* الفوتر */
+/* الفوتر البسيط أسفل الشاشة */
 
 footer{
-
     background:#25005c;
-
     color:white;
-
     text-align:center;
-
-    padding:20px;
+    padding:12px 20px;
+    font-size: 14px;
 }
 
 /* الموبايل */
 
 @media(max-width:768px){
 
-.hero{
-
-    height:380px;
-}
-
 .logo-corner img{
-
     width:120px;
 }
 
 .hero h1{
-
     font-size:30px;
 }
 
 .hero p{
-
     font-size:18px;
+}
+
+.cards{
+    margin-top: 25px;
 }
 
 }
@@ -232,45 +176,41 @@ footer{
 
 <body>
 
-<div class="main-bg">
+<section class="hero">
 
-    <section class="hero">
+    <div class="logo-corner">
+        <img src="final%20logo.jpg" alt="شعار جمعية تنظيم الأسرة السورية">
+    </div>
 
-        <div class="logo-corner">
-            <img src="final%20logo.jpg" alt="شعار جمعية تنظيم الأسرة السورية">
-        </div>
+    <h1>جمعية تنظيم الأسرة السورية</h1>
 
-        <h1>جمعية تنظيم الأسرة السورية</h1>
-
-        <p>بوابة المراكز والخدمات الطبية</p>
-
-    </section>
+    <p>بوابة المراكز والخدمات الطبية</p>
 
     <div class="cards">
 
-        <a href="clinics" class="card clinics">
+        <a href="clinics.html" class="card">
             <div class="icon">🩺</div>
             <div class="card-title">العيادات</div>
         </a>
 
-        <a href="locations" class="card locations">
+        <a href="locations.html" class="card">
             <div class="icon">📍</div>
             <div class="card-title">مواقع المراكز</div>
         </a>
 
-        <a href="services" class="card services">
+        <a href="services.html" class="card">
             <div class="icon">🏥</div>
             <div class="card-title">الخدمات</div>
         </a>
 
-        <a href="contact" class="card contact">
+        <a href="contact.html" class="card">
             <div class="icon">📞</div>
             <div class="card-title">اتصل بنا</div>
         </a>
 
     </div>
 
-</div>
+</section>
 
 <footer>
 SFPA © 2026
