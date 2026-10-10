@@ -37,11 +37,30 @@ body {
     flex-direction: column;
 }
 
+/* الشريط الأبيض العلوي للشعار */
+.top-bar {
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    border-bottom: 5px solid var(--orange);
+}
+
+.logo-container img {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
 /* الخلفية الرئيسية */
 .hero {
     position: relative;
     flex: 1;
-    min-height: calc(100vh - 45px);
+    min-height: calc(100vh - 100px);
     background: 
         linear-gradient(
             to bottom,
@@ -59,30 +78,6 @@ body {
     text-align: center;
     color: white;
     padding: 20px;
-}
-
-/* الشعار */
-.logo-corner {
-    position: absolute;
-    top: 25px;
-    left: 25px;
-    z-index: 3;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 10px 15px;
-    border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(5px);
-    transition: transform 0.3s ease;
-}
-
-.logo-corner:hover {
-    transform: scale(1.03);
-}
-
-.logo-corner img {
-    width: 160px;
-    height: auto;
-    display: block;
 }
 
 /* عناوين الصفحة */
@@ -230,8 +225,8 @@ footer {
 
 /* الشاشات الصغيرة */
 @media (max-width: 768px) {
-    .logo-corner { top: 15px; left: 15px; }
-    .logo-corner img { width: 110px; }
+    .top-bar { padding: 10px 15px; }
+    .logo-container img { width: 110px; }
     .hero h1 { font-size: 32px; }
     .hero p { font-size: 17px; }
     .cards { gap: 15px; }
@@ -244,11 +239,14 @@ footer {
 
 <body>
 
-<section class="hero">
-
-    <div class="logo-corner">
+<!-- الشريط الأبيض العلوي للشعار -->
+<div class="top-bar">
+    <div class="logo-container">
         <img src="final%20logo.jpg" alt="شعار جمعية تنظيم الأسرة السورية">
     </div>
+</div>
+
+<section class="hero">
 
     <h1>جمعية تنظيم الأسرة السورية</h1>
     <p>بوابة المراكز والخدمات الطبية</p>
@@ -268,14 +266,14 @@ footer {
             <div class="card-title">الخدمات</div>
         </a>
 
- <a href="map.html" class="card">
-    <div class="icon-box">
-        <i class="fa-solid fa-map-location-dot"></i>
-    </div>
-    <div class="card-title">الخريطة التفاعلية</div>
-</a>
+        <a href="https://umap.openstreetmap.fr/en/map/map_1468761#7/35.151347/39.056396" target="_blank" class="card">
+            <div class="icon-box">
+                <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+            <div class="card-title">الخريطة التفاعلية</div>
+        </a>
 
-       <a href="tel:+963933301252" class="card" title="اتصل برقم الشكاوى">
+        <a href="tel:0900000000" class="card" title="اتصل برقم الشكاوى">
             <div class="icon-box">
                 <i class="fa-solid fa-headset"></i>
             </div>
