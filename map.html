@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الخريطة التفاعلية - جمعية تنظيم الأسرة السورية</title>
+
+<!-- استدعاء خط Cairo الاحترافي -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- استدعاء أيقونات FontAwesome الاحترافية -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- استدعاء مكتبة Leaflet CSS الخاصة بالخريطة -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<style>
+:root {
+    --purple: #25005c;
+    --orange: #f6511d;
+    --card-text: #111111;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: #11002c;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* شريط التنصيب العلوي أو الهيدر البسيط */
+.header {
+    background: var(--purple);
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.header h1 {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.back-btn {
+    background: var(--orange);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+    background: #e04515;
+}
+
+/* حاوية الخريطة */
+#map {
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    z-index: 1;
+}
+
+/* تخصيص نصوص ومظهر النافذة المنسدلة في الخريطة Popup */
+.leaflet-popup-content-wrapper {
+    font-family: 'Cairo', sans-serif;
+    border-radius: 16px;
+    padding: 5px;
+    text-align: right;
+    direction: rtl;
+}
+
+.leaflet-popup-content h3 {
+    color: var(--purple);
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.leaflet-popup-content p {
+    color: #555;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* الفوتر البسيط */
+footer {
+    background: var(--purple);
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    z-index: 10;
+}
+</style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>الخريطة التفاعلية لمراكز جمعية تنظيم الأسرة السورية</h1>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> الرئيسية</a>
+    </div>
+
+    <!-- عنصر الخريطة -->
+    <div id="map"></div>
+
+    <footer>
+        SFPA © 2026 Ali issa
+    </footer>
+
+    <!-- استدعاء مكتبة Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // إعداد الخريطة وتمركزها المبدئي على سورية (إحداثيات مركزية مع مستوى التقريب)
+        const map = L.map('map').setView([35.151347, 39.056396], 7);
+
+        // إضافة طبقة الخريطة من OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // قائمة المراكز الطبية (يمكنك إضافة أو تعديل الإحداثيات والأسماء هنا بسهولة تامة)
+        const centers = [
+            { name: "الإدارة العامة - دمشق", lat: 33.5138, lng: 36.2765, desc: "دمشق - أبو رمانة - جانب نقابة الأطباء" },
+            { name: "مركز دمشق (المجتهد / الصناعة)", lat: 33.5024, lng: 36.3088, desc: "عيادات ونقاط طبية ثابتة" },
+            { name: "فرع حلب", lat: 36.2021, lng: 37.1343, desc: "عيادات وفرق طبية" },
+            { name: "فرع حمص", lat: 34.7324, lng: 36.7137, desc: "الخالدية - الوعر ونقاط طبية" },
+            { name: "فرع حماة", lat: 35.1314, lng: 36.7578, desc: "مركز شباب حماة والعيادات المرتبطة" },
+            { name: "فرع اللاذقية", lat: 35.5316, lng: 35.7915, desc: "مركز الرمل الشمالي وعيادة جبلة" },
+            { name: "فرع درعا", lat: 32.6180, lng: 36.1058, desc: "خدمات صحية وإنجابية" },
+            { name: "فرع دير الزور", lat: 35.3359, lng: 40.1448, desc: "عيادة الميادين والنقاط الطبية" }
+        ];
+
+        // إضافة العلامات (Markers) إلى الخريطة لكل مركز
+        centers.forEach(center => {
+            const marker = L.marker([center.lat, center.lng]).addTo(map);
+            marker.bindPopup(`<h3>${center.name}</h3><p>${center.desc}</p>`);
+        });
+    </script>
+
+</body>
+</html>
